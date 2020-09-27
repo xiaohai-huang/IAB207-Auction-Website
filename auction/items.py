@@ -14,4 +14,6 @@ bp = Blueprint('item', __name__, url_prefix='/items')
 def show(id):
     item = Item.query.filter_by(id=id).first()
     # basically, using id as the url and querying the database with it i.e. books.com/items/1 would return the page of item with id 1
-    
+    # put form here
+    # render template goes here
+    # return render_template("item.html", )
