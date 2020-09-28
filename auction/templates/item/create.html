@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <title>List an item</title>
+</head>
+
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="index.HTML"><b>Buckley's Books</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.HTML">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Help</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            My Account
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">My Bids</a>
+            <a class="dropdown-item" href="#">My Listings</a>
+            <a class="dropdown-item" href="item/create.html">Create a Listing</a>
+            <a class="dropdown-item" href="WISHLIST.HTML">Watchlists</a>
+            <a class="dropdown-item" href="#">Account Details</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        Welcome, LOGGED_IN_USER.
+      </span>
+    </div>
+  </nav>
+  <br>
+  <hr>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="md-form mt-1">
+          <input class="form-control" type="text" placeholder="Search for anything: genre, author, title etc."
+            aria-label="Search">
+        </div>
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-outline-primary">Search</button>
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-outline-primary">Advanced Search Options</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <hr>
+</header>
+
+<body>
+
+  <div class="jumbotron">
+    <h1 class="display-4" style="text-align: center;">You've made the right decision.</h1>
+    <hr>
+    <p class="lead" style="text-align: center;">Thank you for choosing to sell with Buckley's Books. Let's get started
+      by describing what you're going to be auctioning.</p>
+    </p>
+  </div>
+  <h6 style="text-align: center;">Tell us about your item. Items marked with an <span style="color: red;">*</span> are
+    <b>mandatory</b>.</h6>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <form>
+          <div class="form-group">
+            <label>Book Title <span style="color: red;">*</span></label>
+            <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
+              title="This is the title of the book you are selling, not the advertised listing title."><svg width="1em"
+                height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+              </svg></button>
+            <input class="form-control" type="text" placeholder="">
+
+          </div>
+          <div class="form-group">
+            <label>ISBN <span style="color: red;">*</span></label>
+            <input class="form-control" type="text" placeholder="">
+          </div>
+          <div class="form-group">
+            <label>Author <span style="color: red;">*</span></label>
+            <input class="form-control" type="text" placeholder="">
+          </div>
+          <div class="form-group">
+            <label>Edition</label>
+            <input class="form-control" type="text" placeholder="">
+          </div>
+          <div class="form-group">
+            <label>Category <span style="color: red;">*</span></label>
+            <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
+              title="If your book fits into more than one category, pick the one that applies the most."><svg
+                width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+              </svg></button>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Select a genre category</option>
+              <option>Young Adult</option>
+              <option>Science-Fiction</option>
+              <option>Fantasy</option>
+              <option>Biography</option>
+              <option>Non-Fiction</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Book Condition <span style="color: red;">*</span></label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Select a book condition</option>
+              <option>Untouched</option>
+              <option>Pristine</option>
+              <option>Very good</option>
+              <option>Good - used</option>
+              <option>Some wear and tear</option>
+              <option>Worn</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Autograph Status <span style="color: red;">*</span></label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Specify if the book is autographed</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <label>Image Preview <span style="color: red;">*</span></label>
+        <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
+          title="Two or more images are required. At least provide a front cover and back cover shot."><svg width="1em"
+            height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+          </svg></button>
+        <div class="card" style="width: 22rem;">
+          <img class="card-img-top" src="img/1200px-To_Kill_a_Mockingbird_(first_edition_cover).jpg"
+            alt="Card image cap">
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-outline-primary"><svg width="1em" height="1em"
+                      viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                    </svg></button>
+                </div>
+                <div class="col-md-8">
+                  <form>
+                    <div class="form-group">
+                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-outline-primary"><svg width="1em" height="1em"
+                      viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                    </svg></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Listing Title <span style="color: red;">*</span></label>
+          <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
+            title="This is what other users will find your listing by. It does not need to be identical to the book title."><svg
+              width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+            </svg></button>
+          <input class="form-control" type="text" placeholder="">
+          <label>Description <span style="color: red;">*</span></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+          <br>
+          <br>
+          <label>Starting Bid </label>
+          <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
+            title="Leaving this field blank will result in the starting bid being defaulted to $0.00."><svg width="1em"
+              height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+            </svg></button>
+          <input class="form-control" type="text" placeholder="$0.00">
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="submitListing">
+          <label class="form-check-label" for="submitListing">
+            By submitting this listing, I certify that the information given is accurate to the best of my knowledge.
+          </label>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </div>
+      <div class="col-md-1">
+        <button type="submit" class="btn btn-light">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
+<footer class="footer mt-auto py-3">
+  <hr>
+  <div class="position-relative overflow-hidden p-1 p-md-1 m-md-1 text-center bg-light">
+    <div class="col-md-5 p-lg-1 mx-auto my-1">
+      <p class="lead font-weight-normal">Stay up to date with daily/weekly updates on trending listings!</p>
+      <div class="md-form active-cyan active-cyan-1 mb-1">
+        <input class="form-control" type="email" placeholder="Enter an email address" aria-label="email">
+      </div>
+      <br>
+      <a class="btn btn-outline-secondary" href="#">Submit</a>
+      <br>
+      <hr>
+      <p>&copy; Buckley's Books
+      </p>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
+</footer>
+
+</html>
