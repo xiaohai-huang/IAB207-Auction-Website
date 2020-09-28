@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Buckley's Books</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="index.HTML"><b>Buckley's Books</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.HTML">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            My Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">My Bids</a>
+                            <a class="dropdown-item" href="#">My Listings</a>
+                            <a class="dropdown-item" href="item/create.html>Create a Listing</a>
+            <a class=" dropdown-item" href="WISHLIST.HTML">Watchlists</a>
+                            <a class="dropdown-item" href="#">Account Details</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Welcome, LOGGED_IN_USER.
+                </span>
+            </div>
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <footer class="footer mt-auto py-3">
+        <hr>
+        <div class="position-relative overflow-hidden p-1 p-md-1 m-md-1 text-center bg-light">
+            <div class="col-md-5 p-lg-1 mx-auto my-1">
+                <p class="lead font-weight-normal">Stay up to date with daily/weekly updates on trending listings!</p>
+                <div class="md-form active-cyan active-cyan-1 mb-1">
+                    <input class="form-control" type="email" placeholder="Enter an email address" aria-label="email">
+                </div>
+                <br>
+                <a class="btn btn-outline-secondary" href="#">Submit</a>
+                <br>
+                <hr>
+                <p>&copy; Buckley's Books
+                </p>
+            </div>
+            <div class="product-device shadow-sm d-none d-md-block"></div>
+            <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+        </div>
+    </footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
