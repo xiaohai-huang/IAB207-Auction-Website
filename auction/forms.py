@@ -1,6 +1,6 @@
 
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField,SelectField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 
 
@@ -17,7 +17,9 @@ class RegisterForm(FlaskForm):
     
     #add buyer/seller - check if it is a buyer or seller hint : Use RequiredIf field
 
-
+    user_type = SelectField(u'Role', choices=[('buyer', 'Buyer'), ('seller', 'Seller')],
+                            validators=[InputRequired("A role should be selected")])
+                            
     #linking two fields - password should be equal to data entered in confirm
     password=PasswordField("Password", validators=[InputRequired(),
                   EqualTo('confirm', message="Passwords should match")])

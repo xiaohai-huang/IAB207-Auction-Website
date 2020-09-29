@@ -1,6 +1,7 @@
-from . import db
 # need for datetime.now()
 from datetime import datetime
+from flask_login import UserMixin
+from . import db
 
 class Item(db.Model):
     __tablename__='items'
@@ -12,7 +13,7 @@ class Item(db.Model):
     book_ISBN = db.Column(db.String(64), index=True)
     listing_description = db.Column(db.String(500), nullable=False)
     starting_bid = db.Column(db.Float, default=0.01)
-    item_status = db.Column(db.string(6), default='Open')
+    item_status = db.Column(db.String(6), default='Open')
     image = db.Column(db.String(60), nullable=False, default='default.jpg')
 
     # one to many relationship - user can have multiple items
@@ -36,7 +37,7 @@ class Bid(db.Model):
     # bid user
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-class User(db.Model):
+class User(db.Model,UserMixin):
     __tablename__='users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), index=True, unique=True, nullable=False)
