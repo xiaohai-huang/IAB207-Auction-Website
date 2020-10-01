@@ -23,13 +23,13 @@ class Item(db.Model):
     #backref
     bids = db.relationship('Bid', backref='item')
     wishes = db.relationship('Wish', backref='item')
-    #images = db.relationship('Image', backref='item')
+    images = db.relationship('Image', backref='item')
     
-#class Image(db.Model):
-    #__tablename__='images'
-    #id = db.Column(db.Integer, primary_key=True)
-    #image = db.Column(db.String(60), nullable=False, default='default.jpg')
-    #item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
+class Image(db.Model):
+    __tablename__='images'
+    id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String(60), nullable=False, default='default.jpg')
+    item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
     
     
 class Bid(db.Model):
