@@ -1,0 +1,24 @@
+/* These classes are applied to body and main respectively
+They make the footer stick to the bottom of the screen if the viewport is too tall*/
+.Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.Site-content {
+    flex: 1;
+}
+
+.bg-second {
+    background-color: rgb(155, 178, 209) !important;
+}
+.bg-light2 {
+    background-color: rgb(210, 224, 243) !important;
+}
+.bg-dark2 {
+    background-color: rgb(41, 41, 61) !important;
+}
+
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
