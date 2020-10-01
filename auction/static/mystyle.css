@@ -22,3 +22,44 @@ They make the footer stick to the bottom of the screen if the viewport is too ta
 * {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+/* nav bar */
+.navbar{
+    padding:0.9rem;
+}
+.navbar-nav li{
+    padding-left: 10px;
+}
+.nav-link{
+    font-size: 1.1em !important;
+}
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+
+
+@media (max-width: 1920px) { 
+    #register-in-menu { 
+      display: none; 
+    } 
+  }
+
+@media (max-width:992px){
+    
+    #register-in-menu { 
+        display:inline-block !important; 
+      } 
+}
+
+@media (max-width:576px){
+    #loginBtn{
+        padding-top: 12px;
+    }
+}
