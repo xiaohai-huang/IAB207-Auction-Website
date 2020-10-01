@@ -8,4 +8,12 @@ bp = Blueprint('main', __name__)
 def index():
     #items = Item.query.all()
     return render_template('index.html') #,items=items)
-    #Must implement the db so that this can be fixed
+    #TODO: implement the db so that this can be fixed
+
+#TODO: search route like in the workshop project
+
+@bp.route('/wishlist')
+def wishlist():
+    #get the wishlist items of the current user
+    return render_template('wishlist.html') #,include the items
+    #TODO: implement the db so that this can be fixed
