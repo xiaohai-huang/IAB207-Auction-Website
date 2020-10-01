@@ -14,7 +14,7 @@ class Item(db.Model):
     listing_description = db.Column(db.String(500), nullable=False)
     starting_bid = db.Column(db.Float, default=0.01)
     item_status = db.Column(db.String(6), default='Open')
-    image = db.Column(db.String(60), nullable=False, default='default.jpg')
+    #image = db.Column(db.String(60), nullable=False, default='default.jpg')
 
     # one to many relationship - user can have multiple items
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -23,9 +23,15 @@ class Item(db.Model):
     #backref
     bids = db.relationship('Bid', backref='item')
     wishes = db.relationship('Wish', backref='item')
+    #images = db.relationship('Image', backref='item')
     
-
-
+#class Image(db.Model):
+    #__tablename__='images'
+    #id = db.Column(db.Integer, primary_key=True)
+    #image = db.Column(db.String(60), nullable=False, default='default.jpg')
+    #item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
+    
+    
 class Bid(db.Model):
     __tablename__='bids'
     id = db.Column(db.Integer, primary_key=True)
