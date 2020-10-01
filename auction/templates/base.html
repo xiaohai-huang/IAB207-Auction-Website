@@ -29,25 +29,29 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Help</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            My Account
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">My Bids</a>
-                            <a class="dropdown-item" href="#">My Listings</a>
-                            <a class="dropdown-item" href="item/create.html">Create a Listing</a>
-            <a class=" dropdown-item" href="/wishlist">Watchlists</a>
-                            <a class="dropdown-item" href="#">Account Details</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </div>
-                    </li>
+
                 </ul>
-                <span class="navbar-text">
-                    Welcome, LOGGED_IN_USER.
+                {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link disabled text-muted" href="#"><span>Welcome,
+                        {{ current_user.name }}</span></a>
+                <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
+                <span class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">My Bids</a>
+                        <a class="dropdown-item" href="#">My Listings</a>
+                        <a class="dropdown-item" href="item/create">Create a Listing</a>
+                        <a class=" dropdown-item" href="/wishlist">Watchlists</a>
+                        <a class="dropdown-item" href="#">Account Details</a>
+                    </div>
                 </span>
+                {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Log In</a>
+                {% endif %}
             </div>
         </nav>
     </header>
