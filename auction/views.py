@@ -12,7 +12,7 @@ def index():
 
 #TODO: search route like in the workshop project
 
-@bp.route('/wishlist')
+@bp.route('/wishlist') #Possibly move this to another file?
 def wishlist():
     #get the wishlist items of the current user
     return render_template('wishlist.html') #,include the items
