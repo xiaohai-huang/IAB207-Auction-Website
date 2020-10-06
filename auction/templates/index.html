@@ -113,7 +113,7 @@
   </div>
 
   <div class="row">
-{% for item in items %}
+{% for item,num_bids,highest_bid in items %}
     <div class="col-sm">
       <div class="card mb-3 h-100" style="max-width: 540px;">
         <div class="row no-gutters">
@@ -126,20 +126,8 @@
               <h5 class="card-title">{{item.listing_title}}</h5>
               <p class="card-text">{{item.listing_description}}</p>
               <p class="card-text"><small class="text-muted">{{item.item_status}}</small></p>
-              {% set bids = namespace(value = 0) %} <!-- Basically jinja's way of creating a variable -->
-              {% set highest_bid = namespace(value = 0) %}
-              {% for bid in bid_counts %}
-                {% if item.id == bid.item_id %}
-                  {% set bids.value = bids.value + 1 %}
-
-                  {% if bid.bid_price > highest_bid.value %} <!-- Set the variable to the highest bid price encountered -->
-                    {% set highest_bid.value = bid.bid_price %}
-                  {% endif %}
-
-                {% endif %}
-              {% endfor %}
-              <p class="card-text"><small class="text-muted">{{bids.value}} current bid(s)!</small></p>
-              <p class="card-text"><small class="text-muted">Highest current bid: {{highest_bid.value}}</small></p>
+              <p class="card-text"><small class="text-muted">{{num_bids}} current bid(s)!</small></p>
+              <p class="card-text"><small class="text-muted">Highest current bid: {{highest_bid}}</small></p>
               <a class="btn btn-outline-secondary" href="items/1"role="button">View</a>
             </div>
           </div>
