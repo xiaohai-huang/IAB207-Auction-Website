@@ -1,64 +1,26 @@
-index PAGE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Index.HTML
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Sci-Fi Image sourced from:
-https://www.nypl.org/blog/2017/11/14/science-fiction-genre-primer
+https://search.creativecommons.org/photos/61dca004-23e3-47e0-8ebb-ef3ceba433ea
 
 Fantasy Image sourced from:
-https://www.youtube.com/watch?v=iWBo-L7a4mM&ab_channel=TrailerMusicWorldI
+https://search.creativecommons.org/photos/50e8eb62-0998-424b-8a74-a1b7c477b547
 
 Mystery Image sourced from:
-https://www.youtube.com/watch?v=rg6NAKkjdmY&ab_channel=EpicMusicChannel%28EMC%29
+https://search.creativecommons.org/photos/95707ba4-9f38-4788-8122-e3202bb38fb4
 
 Autobiography Image sourced from:
-http://daveleingang.com/home/be-the-change-you-want-to-see-in-the-world-mahatma-gandhi/
+https://search.creativecommons.org/photos/b161a7ef-cac0-48c2-8399-45da8e8acdec
 
 Autograph Image sourced from:
-https://www.rvcj.com/autographs-44-famous-indian-personalities-may-never-seen/
+https://search.creativecommons.org/photos/2064a96c-758c-4d3c-adf1-25170acd469c
 
 Non-Fiction Image sourced from:
-https://medium.com/berkman-klein-center/what-makes-information-valuable-information-quality-revisited-4ceb5ee11048
+https://search.creativecommons.org/photos/c5d92326-edb2-477d-bb10-50117629a6d6
 
-Hitchhiker's Five Novel Volume Image sourced from:
-http://theevilrobotblog.blogspot.com/2013/01/book-review-hitchhikers-guide-to-galaxy.html
+Placeholder Image sourced from:
+https://search.creativecommons.org/photos/3b21e26d-37bd-4160-b35f-0035c69546c6
 
-To Kill a Mockingbird Novel Image sourced from:
-https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird
-
-Lord of the Flies Novel Image sourced from:
-https://en.wikipedia.org/wiki/Lord_of_the_Flies
-
-Wind in the Willows Novel Image sourced from:
-http://davidpetersen.blogspot.com/2016/05/wind-in-willows-jacket-process.html
-
-ITEM DETAILS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Hitchhiker's Five Novel Volume Image sourced from:
-http://theevilrobotblog.blogspot.com/2013/01/book-review-hitchhikers-guide-to-galaxy.html
-
-Hitchhiker's Guide The Trilogy of Five Image sourced from:
-https://qualitybookcovers.wordpress.com/category/series/the-hitchhikers-guide-to-the-galaxy/
-
-Original Hitchhiker's Guide Novel Cover Image sourced from:
-https://hitchhikers.fandom.com/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(book)
-
-WATCHLIST
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To Kill a Mockingbird Novel Image sourced from:
-https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird
-
-Lord of the Flies Novel Image sourced from:
-https://en.wikipedia.org/wiki/Lord_of_the_Flies
-
-The Great Gatsby Novel Image sourced from:
-https://www.simonandschuster.co.uk/books/The-Great-Gatsby/F-Scott-Fitzgerald/9781471173936
-
-Hitchhiker's Five Novel Volume Image sourced from:
-http://theevilrobotblog.blogspot.com/2013/01/book-review-hitchhikers-guide-to-galaxy.html
-
-Wind in the Willows Novel Image sourced from:
-http://davidpetersen.blogspot.com/2016/05/wind-in-willows-jacket-process.html
-
-LISTING CREATION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To Kill a Mockingbird Novel Image sourced from:
-https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
