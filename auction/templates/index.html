@@ -99,7 +99,7 @@
   </div>
 </div>
 
-
+{% if items %}
 <div class="album py-5 bg-light22">
   <div class="container">
     <div class="position-relative overflow-hidden p-5 p-md-1 m-md-1 text-center bg-light22">
@@ -111,7 +111,9 @@
       <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
     </div>
   </div>
+
   <div class="row">
+{% for item in items %}
     <div class="col-sm">
       <div class="card mb-3 h-100" style="max-width: 540px;">
         <div class="row no-gutters">
@@ -121,17 +123,34 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">SIGNED - 1ST EDITION - HITCHHIKER'S GUIDE</h5>
-              <p class="card-text">ONE OF A KIND! Signed by Douglas Adams himself, first edition in mint condition.
-                MUST OWN for any serious collector!</p>
-              <p class="card-text"><small class="text-muted">42 current bid(s)! Last bid: 7 second(s) ago.</small></p>
-              <p class="card-text"><small class="text-muted">Highest current bid: $420.01</small></p>
+              <h5 class="card-title">{{item.listing_title}}</h5>
+              <p class="card-text">{{item.listing_description}}</p>
+              <p class="card-text"><small class="text-muted">{{item.item_status}}</small></p>
+              {% set bids = namespace(value = 0) %} <!-- Basically jinja's way of creating a variable -->
+              {% set highest_bid = namespace(value = 0) %}
+              {% for bid in bid_counts %}
+                {% if item.id == bid.item_id %}
+                  {% set bids.value = bids.value + 1 %}
+
+                  {% if bid.bid_price > highest_bid.value %} <!-- Set the variable to the highest bid price encountered -->
+                    {% set highest_bid.value = bid.bid_price %}
+                  {% endif %}
+
+                {% endif %}
+              {% endfor %}
+              <p class="card-text"><small class="text-muted">{{bids.value}} current bid(s)!</small></p>
+              <p class="card-text"><small class="text-muted">Highest current bid: {{highest_bid.value}}</small></p>
               <a class="btn btn-outline-secondary" href="items/1"role="button">View</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+      {% endfor %}
+    </div>
+
+
+{% endif %}
     <!-- USE A FOR LOOP
       <div class="col-sm">
       <div class="card mb-3 h-100" style="max-width: 540px;">
