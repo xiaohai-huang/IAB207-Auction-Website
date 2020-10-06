@@ -14,6 +14,7 @@ class Item(db.Model):
     listing_description = db.Column(db.String(500), nullable=False)
     starting_bid = db.Column(db.Float, default=0.01)
     item_status = db.Column(db.String(6), default='Open')
+    item_datetime = db.Column(db.DateTime, default=datetime.now())
     #image = db.Column(db.String(60), nullable=False, default='default.jpg')
 
     # one to many relationship - user can have multiple items
