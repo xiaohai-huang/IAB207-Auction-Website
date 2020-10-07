@@ -29,7 +29,7 @@ class Item(db.Model):
 class Image(db.Model):
     __tablename__='images'
     id = db.Column(db.Integer, primary_key=True)
-    image = db.Column(db.String(60), nullable=False, default='default.jpg')
+    image = db.Column(db.String(60), nullable=False, default='../static/placeholder.jpg')
     item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
     
     
