@@ -12,7 +12,7 @@ def index():
     #items = Item.query.order_by(Item.item_datetime.desc()).limit(5).all() # grabs the 5 most recent as per assignment specs
     # item, num bids, highest bid
     items_info = db.session.query(Item,func.count(Bid.id),func.max(Bid.bid_price)).\
-        filter(Item.id==Bid.item_id).\
+        outerjoin(Bid,Item.id==Bid.item_id).\
         order_by(Item.item_datetime.desc()).\
         group_by(Item.id).limit(5).all()
     
