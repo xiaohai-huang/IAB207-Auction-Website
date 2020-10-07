@@ -119,13 +119,18 @@
         <div class="row no-gutters">
           <div class="col-md-4">
             <img src="../static/placeholder.jpg" class="card-img"
-              alt="Hitchhiker's Guide to the Galaxy novel cover">
+              alt="Novel cover image">
           </div>
           <div class="col-md-8">
             <div class="card-body">
+              {% if item.item_status == 'Open' %}
+              <span class="badge badge-pill badge-success">Item Still Available</span> <!-- Feel free to change how this looks aesthetically :) -->
+              {% else %}
+              <span class="badge badge-pill badge-danger">Auction Closed</span> <!-- Feel free to change how this looks aesthetically :) -->
+              {% endif %}
+              <hr> <!-- Feel free to change how this looks aesthetically :) -->
               <h5 class="card-title">{{item.listing_title}}</h5>
               <p class="card-text">{{item.listing_description}}</p>
-              <p class="card-text"><small class="text-muted">{{item.item_status}}</small></p>
               <p class="card-text"><small class="text-muted">{{num_bids}} current bid(s)!</small></p>
               <p class="card-text"><small class="text-muted">Highest current bid: {{highest_bid}}</small></p>
               <a class="btn btn-outline-secondary" href="items/1"role="button">View</a>
