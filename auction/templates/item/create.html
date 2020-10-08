@@ -14,7 +14,7 @@
 <hr>
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <form>
         <div class="form-group">
           <label>Book Title <span style="color: red;">*</span></label>
@@ -38,10 +38,6 @@
           <input class="form-control" type="text" placeholder="">
         </div>
         <div class="form-group">
-          <label>Edition</label>
-          <input class="form-control" type="text" placeholder="">
-        </div>
-        <div class="form-group">
           <label>Category <span style="color: red;">*</span></label>
           <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
             title="If your book fits into more than one category, pick the one that applies the most."><svg width="1em"
@@ -53,10 +49,11 @@
             </svg></button>
           <select class="form-control" id="exampleFormControlSelect1">
             <option>Select a genre category</option>
-            <option>Young Adult</option>
-            <option>Science-Fiction</option>
+            <option>Science Fiction</option>
             <option>Fantasy</option>
-            <option>Biography</option>
+            <option>Mystery</option>
+            <option>Autobiography</option>
+            <option>Autographed Works</option>
             <option>Non-Fiction</option>
           </select>
         </div>
@@ -80,18 +77,17 @@
             <option>No</option>
           </select>
         </div>
+        <label>Images <span style="color: red;">*</span></label>
+        <br>
+        <form action="">
+          <input type="file" id="myFile" name="filename">
+        </form>
       </form>
     </div>
+    <!-- Don't know of a way to actually do a live image preview - feel free to bring this back if you think you can
     <div class="col-md-4">
       <label>Image Preview <span style="color: red;">*</span></label>
-      <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
-        title="Two or more images are required. At least provide a front cover and back cover shot."><svg width="1em"
-          height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-          <path
-            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-        </svg></button>
+      
       <div class="card" style="width: 22rem;">
         <img class="card-img-top" src="img/1200px-To_Kill_a_Mockingbird_(first_edition_cover).jpg" alt="Card image cap">
         <div class="card-body">
@@ -123,7 +119,8 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    -->
+    <div class="col-md-6">
       <div class="form-group">
         <label>Listing Title <span style="color: red;">*</span></label>
         <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
@@ -137,7 +134,6 @@
         <input class="form-control" type="text" placeholder="">
         <label>Description <span style="color: red;">*</span></label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
-        <br>
         <br>
         <label>Starting Bid </label>
         <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
