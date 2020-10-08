@@ -13,7 +13,7 @@ bp = Blueprint('item', __name__, url_prefix='/items')
 @bp.route('/<id>')
 def show(id):
     item = Item.query.filter_by(id=id).first() # grab item query data by id
-    images = item.images #Image.query.filter_by(item_id = id).all()
+    images = Image.query.filter_by(item_id = id).all()
     user = User.query.filter_by(id = item.user_id).first() # this is the user who has listed the item, need to pull their username
     bids = Bid.query.filter_by(item_id = item.id).order_by(Bid.bid_datetime.desc()).limit(10).all() # grabs top ten most recent bids
     formatted_datetime = item.item_datetime.strftime("%m/%d/%Y, %H:%M:%S") # formats into a nice datetime that can be used to show item listing date; this is optional

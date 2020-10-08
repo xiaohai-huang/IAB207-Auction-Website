@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, session
 from flask_login import current_user
-from .models import Item, Bid
+from .models import Item, Bid, Watchlist
 from sqlalchemy import func
 from auction import db
 bp = Blueprint('main', __name__)
@@ -15,7 +15,7 @@ def index():
         outerjoin(Bid,Item.id==Bid.item_id).\
         order_by(Item.item_datetime.desc()).\
         group_by(Item.id).limit(5).all()
-    
+
     return render_template('index.html', items = items_info)
 
 #TODO: search route like in the workshop project
@@ -23,5 +23,6 @@ def index():
 @bp.route('/wishlist') #Possibly move this to another file?
 def wishlist():
     #get the wishlist items of the current user
+    #wishlists = Wishlist.query.filter_by(expression).all()
+    #TODO: FIX THE ABOVE STATEMENT
     return render_template('wishlist.html') #,include the items
-    #TODO: implement the db so that this can be fixed

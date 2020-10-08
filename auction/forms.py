@@ -14,12 +14,12 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     user_name=StringField("User Name", validators=[InputRequired()])
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
-    
+
     #add buyer/seller - check if it is a buyer or seller hint : Use RequiredIf field
 
     user_type = SelectField(u'Role', choices=[('buyer', 'Buyer'), ('seller', 'Seller')],
                             validators=[InputRequired("A role should be selected")])
-                            
+
     #linking two fields - password should be equal to data entered in confirm
     password=PasswordField("Password", validators=[InputRequired(),
                   EqualTo('confirm', message="Passwords should match")])
@@ -27,3 +27,5 @@ class RegisterForm(FlaskForm):
 
     #submit button
     submit = SubmitField("Register")
+
+#TODO: ADD AUCTION AND BID FORMS

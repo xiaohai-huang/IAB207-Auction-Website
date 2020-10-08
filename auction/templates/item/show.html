@@ -35,14 +35,14 @@
       <div class="card" style="width: 38rem;">
         <div class="card-body">
           <h5 class="card-title">{{user.username}}</h5>
-          <p class="card-text">⭐⭐⭐⭐⭐ <a href="">42 Reviews</a></p>
-          <p class="card-text">This user is a trusted seller. <a href=""><svg width="1em" height="1em"
+          <!-- <p class="card-text">⭐⭐⭐⭐⭐ <a href="">42 Reviews</a></p> -->
+          <!-- <p class="card-text">This user is a trusted seller. <a href=""><svg width="1em" height="1em"
                 viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                 <path
                   d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-              </svg></a></p>
+              </svg></a></p> -->
         </div>
       </div>
       <div class="table-responsive-sm">
@@ -115,16 +115,16 @@
         <div class="card-body">
           <p class="card-text">
           <h3 style="text-align: center;">$
-            {% if bids %} 
-            {% set highest_bid = namespace(value = 0) %} 
-            {% for bid in bids %} 
-            {% if bid.bid_price > highest_bid.value %} 
+            {% if bids %}
+            {% set highest_bid = namespace(value = 0) %}
+            {% for bid in bids %}
+            {% if bid.bid_price > highest_bid.value %}
             {% set highest_bid.value = bid.bid_price %}
             {% endif %}
-            {% endfor %} 
-            {{highest_bid.value}} 
-            {% else %} 
-            {{item.starting_bid}} 
+            {% endfor %}
+            {{highest_bid.value}}
+            {% else %}
+            {{item.starting_bid}}
             {% endif %}
           </h3>
           </p>
@@ -137,7 +137,8 @@
       </div>
     </div>
     <div class="col-md-5">
-      <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#bidModal"><svg
+      {% if current_user.is_authenticated %}
+        <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#bidModal"><svg
           width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-check" fill="currentColor"
           xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd"
@@ -154,6 +155,16 @@
           <path fill-rule="evenodd"
             d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
         </svg> Add to Watchlist</button>
+        {% else %}
+        <button type="button" class="btn btn-primary btn-lg btn-block disabled" disabled><svg
+          width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-check" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+          <path fill-rule="evenodd"
+            d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z" />
+        </svg> Log in to bid or add to watchlist</button>
+        {% endif %}
       <br>
       <button type="button" class="btn btn-primary btn-lg btn-block"><svg width="1em" height="1em" viewBox="0 0 16 16"
           class="bi bi-share" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -263,7 +274,7 @@
     </div>
   </div>
 </div>
-        <!-- Doesn't require commenting/review functionality 
+        <!-- Doesn't require commenting/review functionality
         <div class="row">
           <div class="col-md-12">
             <div class="card border-light mb-3" style="max-width: 62rem;">
