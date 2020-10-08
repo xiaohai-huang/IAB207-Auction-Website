@@ -13,10 +13,10 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-          {% if image %}
-          {% for images in image %}
+          {% if images %}
+          {% for image in images %}
           <div class="carousel-item {% if loop.index == 1 %}active {% endif %}"> <!-- Need to stick the active class on the first slide otherwise the carousel glitches out -->
-            <img class="d-block w-100" src="{{images.image}}" alt="First slide" height="450">
+            <img class="d-block w-100" src="{{image.image}}" alt="First slide" height="450">
           </div>
           {% endfor %}
           {% endif %}
