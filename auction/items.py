@@ -5,7 +5,7 @@ from flask import redirect, url_for
 from flask import render_template
 from werkzeug.utils import secure_filename
 import os
-from .models import Item, Wish, Watchlist, Bid, User
+from .models import Item, Wish, Watchlist, Bid, User, Image
 from . import db
 
 bp = Blueprint('item', __name__, url_prefix='/items')
