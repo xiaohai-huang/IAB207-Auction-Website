@@ -2,19 +2,41 @@
 from datetime import datetime
 from flask_login import UserMixin
 from . import db
+import enum
+
+class BookCategory(enum.Enum):
+    SCIENCE_FICTION = "Science Fiction"
+    FANTASY = "Fantasy"
+    MYSTERY = "Mystery"
+    AUTOBIOGRAPHY = "Autobiography"
+    AUTOGRAPHED = "Autographed Works"
+    NON_FICTION = "Non Fiction"
+
+class AutographStatus(enum.Enum):
+    TRUE = "✔️"
+    FALSE = "❌"
+
+class BookCondition(enum.Enum):
+    UNTOUCHED = "Untouched"
+    VERY_GOOD = "Very good - natural deterioration"
+    GOOD = "Good - used"
+    WEAR_AND_TEAR = "Some obvious wear and tear"
+    WORN = "Visibly worn - heavy deterioration"
 
 class Item(db.Model):
     __tablename__='items'
     id = db.Column(db.Integer, primary_key=True)
     listing_title = db.Column(db.String(64), unique=True, index=True, nullable=False)
     book_title = db.Column(db.String(64), index=True, nullable=False)
-    book_category = db.Column(db.String(64), index=True, nullable=False)
+    book_category = db.Column(db.Enum(BookCategory), index=True, nullable=False)
+    autograph_status = db.Column(db.Enum(AutographStatus), index=True, nullable=False)
+    book_condition = db.Column(db.Enum(BookCondition), index=True, nullable=False)
     author_name = db.Column(db.String(64), index=True, nullable=False)
     book_ISBN = db.Column(db.String(64), index=True)
     listing_description = db.Column(db.String(500), nullable=False)
-    starting_bid = db.Column(db.Float, default=0.01)
+    starting_bid = db.Column(db.Float(2), default=0.01)
     item_status = db.Column(db.String(6), default='Open')
-    item_datetime = db.Column(db.DateTime, default=datetime.now().strftime("%Y-%d-%m %H:%M:%S"))
+    item_datetime = db.Column(db.DateTime, default=datetime.now())
     #image = db.Column(db.String(60), nullable=False, default='default.jpg')
 
     # one to many relationship - user can have multiple items
@@ -36,7 +58,7 @@ class Image(db.Model):
 class Bid(db.Model):
     __tablename__='bids'
     id = db.Column(db.Integer, primary_key=True)
-    bid_price = db.Column(db.Float, nullable=False)
+    bid_price = db.Column(db.Float(2), nullable=False)
     bid_datetime = db.Column(db.DateTime, default=datetime.now())
 
     # one item can have multiple bids - one to many
