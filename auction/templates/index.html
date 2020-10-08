@@ -105,7 +105,7 @@
     <div class="position-relative overflow-hidden p-5 p-md-1 m-md-1 text-center bg-light22">
       <div class="col-md-5 p-lg-1 mx-auto my-1">
         <p class="lead font-weight-normal">What's hot right now</p>
-        <p>🔥 Check out these bidding wars 🔥</p>
+        <p>🔥 Check out what has just been listed 🔥</p>
       </div>
       <div class="product-device shadow-sm d-none d-md-block"></div>
       <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
@@ -133,7 +133,7 @@
               <p class="card-text">{{item.listing_description}}</p>
               <p class="card-text"><small class="text-muted">{{num_bids}} current bid(s)!</small></p>
               <p class="card-text"><small class="text-muted">Highest current bid: {{highest_bid}}</small></p>
-              <a class="btn btn-outline-secondary" href="items/1"role="button">View</a>
+              <a class="btn btn-outline-secondary" href="{{url_for('item.show', id=item.id)}}"role="button">View</a>
             </div>
           </div>
         </div>
