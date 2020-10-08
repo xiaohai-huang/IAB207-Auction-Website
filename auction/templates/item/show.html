@@ -114,7 +114,7 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-          <h3 style="text-align: center;">$
+          <h3 style="text-align: center;">
             {% if bids %}
             {% set highest_bid = namespace(value = 0) %}
             {% for bid in bids %}
@@ -122,15 +122,15 @@
             {% set highest_bid.value = bid.bid_price %}
             {% endif %}
             {% endfor %}
-            {{highest_bid.value}}
+            {{"$%.2f"|format(highest_bid.value)}}
             {% else %}
-            {{item.starting_bid}}
+            {{"$%.2f"|format(item.starting_bid)}}
             {% endif %}
           </h3>
           </p>
         </div>
         <div class="card-footer text-muted">
-          Bidding for this item started at: ${{item.starting_bid}}
+          Bidding for this item started at: {{"$%.2f"|format(item.starting_bid)}}
           <br>
           This item was first published on: {{formatted_datetime}}
         </div>
@@ -243,7 +243,7 @@
                       <tr class="table{% if loop.index == 1 %}-success {% endif %}"> <!-- First table entry needs to be green to highlight highest current bid-->
                         <th scope="row">{{bid.bid_datetime}}</th>
                         <td>{% for bidder in bidders %} {% if bidder.id == bid.user_id %} {{bidder.username}} {% endif %} {% endfor %}</td>
-                        <td>${{bid.bid_price}}</td>
+                        <td>{{"$%.2f"|format(bid.bid_price)}}</td>
                       </tr>
                       {% endfor %}
                     </tbody>
@@ -255,7 +255,7 @@
                 <hr>
                 <h4>Place Bid:</h4>
                 <hr>
-                <input class="form-control" type="text" placeholder="Enter a bid greater than: {% if bids %} ${{highest_bid.value}} {% else %} ${{item.starting_bid}} {% endif %}">
+                <input class="form-control" type="text" placeholder="Enter a bid greater than: {% if bids %} {{"$%.2f"|format(highest_bid.value)}} {% else %} {{"$%.2f"|format(item.starting_bid)}} {% endif %}">
               </div>
               <div class="modal-footer">
                 <div class="form-check">
