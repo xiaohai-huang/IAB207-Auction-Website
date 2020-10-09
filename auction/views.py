@@ -16,7 +16,18 @@ def index():
         order_by(Item.item_datetime.desc()).\
         group_by(Item.id).limit(5).all()
 
-    return render_template('index.html', items = items_info, show_category_links = True)
+    # not sure if it's possible to get a single count query that will create a '0' entry for a non encountered column
+    # it just skips the category otherwise - is there a better way to do this?
+    scifi_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.SCIENCE_FICTION).count()
+    fantasy_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.FANTASY).count()
+    mystery_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.MYSTERY).count()
+    autobio_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.AUTOBIOGRAPHY).count()
+    autograph_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.AUTOGRAPHED).count()
+    nonfic_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.NON_FICTION).count()
+
+    return render_template('index.html', items = items_info, show_category_links = True, scifi_count = scifi_count, 
+    fantasy_count = fantasy_count, mystery_count=mystery_count, autobio_count=autobio_count,
+    autograph_count=autograph_count, nonfic_count=nonfic_count)
 
 @bp.route('/search/<category>')
 def search(category):
