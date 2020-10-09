@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, session
 from flask_login import current_user
-from .models import Item, Bid, Watchlist
+from .models import Item, Bid, Watchlist, BookCategory
 from sqlalchemy import func
 from auction import db
 bp = Blueprint('main', __name__)
@@ -16,9 +16,20 @@ def index():
         order_by(Item.item_datetime.desc()).\
         group_by(Item.id).limit(5).all()
 
-    return render_template('index.html', items = items_info)
+    return render_template('index.html', items = items_info, show_category_links = True)
 
-#TODO: search route like in the workshop project
+@bp.route('/search/<category>')
+def search(category):
+    # check that the category enum value exists
+    if BookCategory[category]:
+        # use filter and like function to search for matching destinations
+        items_info = db.session.query(Item,func.count(Bid.id),func.max(Bid.bid_price)).\
+        outerjoin(Bid,Item.id==Bid.item_id).\
+        order_by(Item.item_datetime.desc()).\
+        group_by(Item.id).filter(Item.book_category==category).all()
+        # render index.html with few destinations
+        return render_template('index.html', items=items_info, show_category_links = False, book_category = category)
+
 
 @bp.route('/wishlist') #Possibly move this to another file?
 def wishlist():
