@@ -70,7 +70,10 @@ class User(db.Model,UserMixin):
     __tablename__='users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), index=True, unique=True, nullable=False)
+    user_type = db.Column(db.String(6),nullable=False)
+    contact_number = db.Column(db.String(100),nullable=False)
     email_address = db.Column(db.String(100), index=True, nullable=False)
+    address = db.Column(db.String(100), nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     # backrefs
     items = db.relationship('Item', backref='user')
