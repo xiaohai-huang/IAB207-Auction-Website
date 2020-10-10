@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, session
-from flask_login import current_user
+from flask_login import current_user,login_required
 from .models import Item, Bid, Watchlist, BookCategory
 from sqlalchemy import func
 from auction import db
@@ -43,6 +43,7 @@ def search(category):
 
 
 @bp.route('/wishlist') #Possibly move this to another file?
+@login_required
 def wishlist():
     #get the wishlist items of the current user
     #wishlists = Wishlist.query.filter_by(expression).all()

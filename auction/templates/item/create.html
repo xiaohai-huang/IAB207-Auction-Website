@@ -12,12 +12,13 @@
 <h6 style="text-align: center;">Tell us about your item. Items marked with an <span style="color: red;">*</span> are
   <b>mandatory</b>.</h6>
 <hr>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <form>
+<form method="POST" action="{{url_for('item.create')}}" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
         <div class="form-group">
-          <label>Book Title <span style="color: red;">*</span></label>
+          <label>{{form.book_title.label.text}} <span style="color: red;">*</span></label>
           <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
             title="This is the title of the book you are selling, not the advertised listing title."><svg width="1em"
               height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
@@ -26,19 +27,20 @@
               <path
                 d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
             </svg></button>
-          <input class="form-control" type="text" placeholder="">
+          {{form.book_title(class="form-control",type="text")}}
 
         </div>
         <div class="form-group">
-          <label>ISBN <span style="color: red;">*</span></label>
-          <input class="form-control" type="text" placeholder="">
+          <label>{{form.isbn.label.text}} <span style="color: red;">*</span></label>
+          {{form.isbn(class="form-control",type="text")}}
+        </div>
+
+        <div class="form-group">
+          <label>{{form.author.label.text}} <span style="color: red;">*</span></label>
+          {{form.author(class="form-control",type="text")}}
         </div>
         <div class="form-group">
-          <label>Author <span style="color: red;">*</span></label>
-          <input class="form-control" type="text" placeholder="">
-        </div>
-        <div class="form-group">
-          <label>Category <span style="color: red;">*</span></label>
+          <label>{{form.category.label.text}} <span style="color: red;">*</span></label>
           <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
             title="If your book fits into more than one category, pick the one that applies the most."><svg width="1em"
               height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
@@ -47,44 +49,32 @@
               <path
                 d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
             </svg></button>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Select a genre category</option>
-            <option>Science Fiction</option>
-            <option>Fantasy</option>
-            <option>Mystery</option>
-            <option>Autobiography</option>
-            <option>Autographed Works</option>
-            <option>Non-Fiction</option>
-          </select>
+          {{form.category(class="form-control",id="exampleFormControlSelect1")}}
+
         </div>
         <div class="form-group">
-          <label>Book Condition <span style="color: red;">*</span></label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Select a book condition</option>
-            <option>Untouched</option>
-            <option>Pristine</option>
-            <option>Very good</option>
-            <option>Good - used</option>
-            <option>Some wear and tear</option>
-            <option>Worn</option>
-          </select>
+          <label>{{form.book_condition.label.text}} <span style="color: red;">*</span></label>
+          {{form.book_condition(class="form-control",id="exampleFormControlSelect1")}}
+
         </div>
         <div class="form-group">
-          <label>Autograph Status <span style="color: red;">*</span></label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Specify if the book is autographed</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
+          <label>{{form.autograph_status.label.text}} <span style="color: red;">*</span></label>
+          {{form.autograph_status(class="form-control",id="autograph_status")}}
+          {% if form.autograph_status.errors %}
+
+          <p>{{ form.autograph_status.errors[0] }}</p>
+          {% endif %}
         </div>
-        <label>Images <span style="color: red;">*</span></label>
+
+        <label>{{form.images.label.text}} <span style="color: red;">*</span></label>
         <br>
-        <form action="">
-          <input type="file" id="myFile" name="filename">
-        </form>
-      </form>
-    </div>
-    <!-- Don't know of a way to actually do a live image preview - feel free to bring this back if you think you can
+        {{form.images(multiple="")}}
+        <!-- <form action="">
+          <input type="file" id="myFile" name="filename" multiple>
+        </form> -->
+
+      </div>
+      <!-- Don't know of a way to actually do a live image preview - feel free to bring this back if you think you can
     <div class="col-md-4">
       <label>Image Preview <span style="color: red;">*</span></label>
       
@@ -120,51 +110,76 @@
       </div>
     </div>
     -->
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Listing Title <span style="color: red;">*</span></label>
-        <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
-          title="This is what other users will find your listing by. It does not need to be identical to the book title."><svg
-            width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-            <path
-              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-          </svg></button>
-        <input class="form-control" type="text" placeholder="">
-        <label>Description <span style="color: red;">*</span></label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
-        <br>
-        <label>Starting Bid </label>
-        <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
-          title="Leaving this field blank will result in the starting bid being defaulted to $0.00."><svg width="1em"
-            height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-            <path
-              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-          </svg></button>
-        <input class="form-control" type="text" placeholder="$0.00">
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-10">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="submitListing">
-        <label class="form-check-label" for="submitListing">
-          By submitting this listing, I certify that the information given is accurate to the best of my knowledge.
-        </label>
-      </div>
-    </div>
-    <div class="col-md-1">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>{{form.listing_title.label.text}} <span style="color: red;">*</span></label>
+          <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
+            title="This is what other users will find your listing by. It does not need to be identical to the book title."><svg
+              width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+            </svg></button>
+          {{form.listing_title(class="form-control")}}
 
+          <label>{{form.description.label.text}} <span style="color: red;">*</span></label>
+          {{form.description(class="form-control", id="exampleFormControlTextarea1", rows="15")}}
+          <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea> -->
+          <br>
+          <label>{{form.starting_bid.label.text}} </label>
+          <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top"
+            title="Leaving this field blank will result in the starting bid being defaulted to $0.00."><svg width="1em"
+              height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+            </svg></button>
+          <!-- <input class="form-control" type="text" placeholder="$0.00"> -->
+          {{form.starting_bid(class="form-control", type="text", placeholder="$0.00")}}
+          {% if form.starting_bid.errors %}
+          
+          <p>{{ form.starting_bid.errors[0] }}</p>
+          {% endif %}
+        </div>
+      </div>
     </div>
-    <div class="col-md-1">
-      <button type="submit" class="btn btn-light">Cancel</button>
+    <hr>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-check">
+          {{form.agree()}}
+          {{form.agree.label}}
+          <!-- <input class="form-check-input" type="checkbox" value="" id="submitListing">
+          <label class="form-check-label" for="submitListing">
+            By submitting this listing, I certify that the information given is accurate to the best of my knowledge.
+          </label> -->
+        </div>
+      </div>
+      <div class="col-md-1">
+        {{form.submit(class="btn btn-primary",value="Create")}}
+        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+
+      </div>
+      <div class="col-md-1">
+        {{form.reset(class="btn btn-primary",value="Reset")}}
+        <!-- <button type="submit" class="btn btn-light">Cancel</button> -->
+      </div>
     </div>
   </div>
-</div>
+</form>
+<script>
+  var op = document.getElementById("autograph_status").getElementsByTagName("option");
+  for (var i = 0; i < op.length; i++) {
+    // lowercase comparison for case-insensitivity
+    if (op[i].value.toLowerCase() == "xx") {
+      console.log(op.length);
+
+      op[i].disabled = true;
+      break;
+    }
+  }
+  console.log("123123123");
+</script>
 {% endblock %}
