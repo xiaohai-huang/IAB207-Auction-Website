@@ -42,7 +42,7 @@ class BookCreationForm(FlaskForm):
     category = SelectField(u'Category', choices=[
                                   ('SCIENCE_FICTION', 'Science Fiction')
                                 , ('FANTASY', 'Fantasy')
-                                , ('Mystery', 'Mystery')
+                                , ('MYSTERY', 'Mystery')
                                 , ('AUTOBIOGRAPHY', 'Autobiography')
                                 , ('AUTOGRAPHED', 'Autographed Works')
                                 , ('NON_FICTION', 'Non-Fiction')],
