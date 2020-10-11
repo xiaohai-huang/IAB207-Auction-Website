@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, session
 from flask_login import current_user,login_required
-from .models import Item, Bid, Watchlist, BookCategory, Wish
+from .models import Item, Bid, Watchlist, BookCategory, Wish, Image
 from sqlalchemy import func
 from auction import db
 bp = Blueprint('main', __name__)
@@ -24,10 +24,10 @@ def index():
     autobio_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.AUTOBIOGRAPHY).count()
     autograph_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.AUTOGRAPHED).count()
     nonfic_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.NON_FICTION).count()
-
+    image_thumbnails = db.session.query(Image).join(Item, Item.id == Image.item_id, isouter=True).group_by(Item.id).all()
     return render_template('index.html', items = items_info, show_category_links = True, scifi_count = scifi_count,
     fantasy_count = fantasy_count, mystery_count=mystery_count, autobio_count=autobio_count,
-    autograph_count=autograph_count, nonfic_count=nonfic_count)
+    autograph_count=autograph_count, nonfic_count=nonfic_count, image_thumbnails=image_thumbnails)
 
 @bp.route('/search/<category>')
 def search(category):
