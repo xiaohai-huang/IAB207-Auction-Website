@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, session
 from flask_login import current_user,login_required
-from .models import Item, Bid, Watchlist, BookCategory
+from .models import Item, Bid, Watchlist, BookCategory, Wish
 from sqlalchemy import func
 from auction import db
 bp = Blueprint('main', __name__)
@@ -25,7 +25,7 @@ def index():
     autograph_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.AUTOGRAPHED).count()
     nonfic_count = db.session.query(Item.book_category).filter(Item.book_category == BookCategory.NON_FICTION).count()
 
-    return render_template('index.html', items = items_info, show_category_links = True, scifi_count = scifi_count, 
+    return render_template('index.html', items = items_info, show_category_links = True, scifi_count = scifi_count,
     fantasy_count = fantasy_count, mystery_count=mystery_count, autobio_count=autobio_count,
     autograph_count=autograph_count, nonfic_count=nonfic_count)
 
@@ -33,19 +33,27 @@ def index():
 def search(category):
     # check that the category enum value exists
     if BookCategory[category]:
-        # use filter and like function to search for matching destinations
+        # use filter to search for matching items
         items_info = db.session.query(Item,func.count(Bid.id),func.max(Bid.bid_price)).\
         outerjoin(Bid,Item.id==Bid.item_id).\
         order_by(Item.item_datetime.desc()).\
         group_by(Item.id).filter(Item.book_category==category).all()
-        # render index.html with few destinations
+        # render index.html with items
         return render_template('index.html', items=items_info, show_category_links = False, book_category = category)
 
 
-@bp.route('/wishlist') #Possibly move this to another file?
+@bp.route('/watchlist') #Possibly move this to another file?
 @login_required
-def wishlist():
+def watchlist():
     #get the wishlist items of the current user
-    #wishlists = Wishlist.query.filter_by(expression).all()
-    #TODO: FIX THE ABOVE STATEMENT
-    return render_template('wishlist.html') #,include the items
+    watchlist = Watchlist.query.filter(Watchlist.user_id == current_user.id).first()
+    if watchlist != None:
+        items_info = db.session.query(Wish, Item, func.count(Bid.id),func.max(Bid.bid_price)).\
+            outerjoin(Wish, Item.id == Wish.item_id).\
+            outerjoin(Bid,Item.id==Bid.item_id).\
+            filter_by(Wish.watchlist_id == watchlist.id).\
+            order_by(Item.item_datetime.desc()).\
+            group_by(Item.id).all()
+        return render_template('wishlist.html', items = items_info)
+    else:
+        return render_template('wishlist.html')

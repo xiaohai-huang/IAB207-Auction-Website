@@ -7,7 +7,8 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <div class="list-group list-group-horizontal">
+          <h4 class="card-title">{{current_user.username}}'s Watchlist</h5>
+          <!-- <div class="list-group list-group-horizontal">
             <a href="#" class="list-group-item list-group-item-action active">
               My Wishlist
             </a>
@@ -19,10 +20,10 @@
                 <path fill-rule="evenodd"
                   d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg> <span style="color: blue;">Create New List</span></a>
-          </div>
+          </div> -->
         </div>
         <div class="card-body">
-          <h5 class="card-title">My Wishlist</h5>
+
           <div class="container">
             <div class="row">
               <div class="col-md-8">
@@ -66,6 +67,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        {% if items %}
         <div class="table-responsive-sm">
           <table class="table table-striped table-hover">
             <thead>
@@ -78,21 +80,24 @@
               </tr>
             </thead>
             <tbody>
-              <!-- TODO: IMPLEMENT A FOR LOOP -->
+              {% for wish, item, num_bids, highest_bid in items %}
               <tr>
-                <th scope="row"><img src="../static/1200px-To_Kill_a_Mockingbird_(first_edition_cover).jpg" width="175"
+                <th scope="row"><img src="../static/placeholder.jpg" width="175"
                     height="200"></th>
-                <td><a href="items/1">Original Print - To Kill a Mockingbird</a></td>
-                  <td>$52.07</td>
-                  <td>04/09/2020 08:51:05</td>
+                <td><a href="items/{{item.id}}">{{item.listing_title}}</a></td>
+                  <td>{% if highest_bid %}Highest current bid (out of {{num_bids}}): {{highest_bid}} {% else %} No bids yet! Starting at: {{"$%.2f"|format(item.starting_bid)}} {% endif %}</td>
+                  <td>Added to watchlist {{wish.added_datetime}}</td>
                   <td><button type=" button" class="btn btn-primary btn-sm">Place Bid</button></td>
                 <td><button type="button" class="btn btn-danger btn-sm">Remove Item</button></td>
               </tr>
-
+              {% endfor %}
 
             </tbody>
           </table>
         </div>
+        {% else %}
+        <p>Your watchlist is empty</p>
+        {% endif %}
       </div>
     </div>
   </div>

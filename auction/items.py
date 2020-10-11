@@ -34,7 +34,7 @@ def show(id):
 
 
 @bp.route('/create', methods=['GET', 'POST'])
-# TODO: MAKE THE NECESSARY CHANGES TO UNCOMMENT THE COMMENTED CODE
+
 @login_required
 def create():
     print('Method type: ', request.method)
@@ -76,10 +76,10 @@ def create():
 
             img_model = Image(image=db_upload_path,item_id=new_book.id)
             db.session.add(img_model)
-            db.session.commit() 
+            db.session.commit()
 
-            
-    
+
+
         return redirect(url_for('item.show', id=new_book.id))
     return render_template('item/create.html', form=form)
 

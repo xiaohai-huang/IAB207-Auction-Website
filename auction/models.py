@@ -41,20 +41,20 @@ class Item(db.Model):
 
     # one to many relationship - user can have multiple items
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    
-    
+
+
     #backref
     bids = db.relationship('Bid', backref='item')
     wishes = db.relationship('Wish', backref='item')
     images = db.relationship('Image', backref='item')
-    
+
 class Image(db.Model):
     __tablename__='images'
     id = db.Column(db.Integer, primary_key=True)
     image = db.Column(db.String(60), nullable=False, default='../static/placeholder.jpg')
     item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
-    
-    
+
+
 class Bid(db.Model):
     __tablename__='bids'
     id = db.Column(db.Integer, primary_key=True)
