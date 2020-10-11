@@ -1,2 +1,2 @@
 # IAB207-Auction-Website
-Team members: Casey, Sophia Walsh Long, Baorong Huang, Fernando
+Team members: Casey, Sophia Walsh Long, Baorong Huang
