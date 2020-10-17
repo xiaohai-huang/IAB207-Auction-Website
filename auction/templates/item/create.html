@@ -163,8 +163,9 @@
 
       </div>
       <div class="col-md-1">
-        {{form.reset(class="btn btn-primary",value="Reset")}}
+        <!-- {{form.reset(class="btn btn-primary",value="Reset")}} -->
         <!-- <button type="submit" class="btn btn-light">Cancel</button> -->
+        <a class="btn btn-primary" href="{{url_for('item.create')}}" >Reset</a>
       </div>
     </div>
   </div>
@@ -180,6 +181,5 @@
       break;
     }
   }
-  console.log("123123123");
 </script>
 {% endblock %}
