@@ -2,15 +2,15 @@ from flask import Blueprint
 from flask import request
 from flask import session
 from flask import redirect, url_for
-from flask import render_template
+from flask import render_template,flash
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
 import os
 from .models import Item, Wish, Watchlist, Bid, User, Image, BookCategory, BookCondition, AutographStatus
 from . import db
-from auction.forms import BookCreationForm
-
+from auction.forms import BookCreationForm, BidForm
+from sqlalchemy import func,desc
 bp = Blueprint('item', __name__, url_prefix='/items')
 
 
@@ -26,15 +26,43 @@ def show(id):
     formatted_datetime = item.item_datetime.strftime("%m/%d/%Y, %H:%M:%S")
     bidders = db.session.query(User).join(Bid, User.id == Bid.user_id, isouter=True).join(
         Item, id == Bid.item_id, isouter=True).filter_by(id=Bid.item_id).order_by(Bid.bid_datetime.desc()).group_by(User.id).limit(10).all()
-    # ,item=item, form=form, etc)
-    return render_template("item/show.html", item=item, images=images, user=user, bids=bids, formatted_datetime=formatted_datetime, bidders=bidders)
+
+    bid_form = BidForm()    
+    return render_template("item/show.html", item=item, images=images,
+                 user=user, bids=bids, formatted_datetime=formatted_datetime,
+                bidders=bidders, bid_form = bid_form)
+
+@bp.route('/<item_id>/bid',methods=["GET","POST"])
+def bid(item_id):
+    form = BidForm()
+    book = Item.query.filter(Item.id==item_id).first()
+
+    if form.validate_on_submit():
+        # get the highest bid
+        bids = book.bids
+        if len(bids)!=0:
+            max_bid_price = bids[0].bid_price
+        else:
+            max_bid_price = book.starting_bid
+
+        for b in bids:
+            if b.bid_price > max_bid_price:
+                max_bid_price = b.bid_price
+        if form.bid_price.data > max_bid_price:
+
+            bid = Bid(bid_price=form.bid_price.data,item_id=item_id,user_id=current_user.id)
+            db.session.add(bid)
+            db.session.commit()
+        else: # erro message less than current bid price
+            print("bid price should be greater than the current price")
+            flash(f"Please eneter a bid that is greater than ${max_bid_price}")
+    return redirect(url_for('item.show',id=item_id))
 
 
 
 
 
 @bp.route('/create', methods=['GET', 'POST'])
-
 @login_required
 def create():
     print('Method type: ', request.method)
