@@ -65,6 +65,9 @@ def bid(item_id):
 @bp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
+    if( current_user.user_type!="seller"):
+        return redirect(url_for('main.index'))
+        
     print('Method type: ', request.method)
     form = BookCreationForm()
     if(form.validate_on_submit()):
