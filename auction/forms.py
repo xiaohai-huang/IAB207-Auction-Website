@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms.fields import (TextAreaField, SubmitField, StringField,
                             PasswordField, SelectField, MultipleFileField)
 from wtforms import FloatField, BooleanField
-from wtforms.validators import InputRequired, Length, Email, EqualTo
+from wtforms.validators import InputRequired, Length, Email, EqualTo,NumberRange
 from flask_wtf.file import FileRequired, FileField, FileAllowed, DataRequired
 # add the types of files allowed as a set
 ALLOWED_FILE = {'png', 'jpg', 'JPG', 'PNG'}
@@ -83,7 +83,8 @@ class BookCreationForm(FlaskForm):
     description = TextAreaField("Description", validators=[
                                 InputRequired("A description is required!")])
     starting_bid = FloatField("Starting Bid", validators=[
-                              InputRequired("A starting bid is required!")])
+                              InputRequired("A starting bid is required!"),
+                              NumberRange(min=0.01,message="Starting bid price should be at least $0.01!")])
     agree = BooleanField("By submitting this listing, I certify that the information given is accurate to the best of my knowledge.",
                          validators=[DataRequired()])
     submit = SubmitField("Create")
