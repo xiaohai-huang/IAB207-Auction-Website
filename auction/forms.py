@@ -4,9 +4,8 @@ from wtforms.fields import (TextAreaField, SubmitField, StringField,
                             PasswordField, SelectField, MultipleFileField)
 from wtforms import FloatField, BooleanField
 from wtforms.validators import InputRequired, Length, Email, EqualTo,NumberRange
-from flask_wtf.file import FileRequired, FileField, FileAllowed, DataRequired
-# add the types of files allowed as a set
-ALLOWED_FILE = {'png', 'jpg', 'JPG', 'PNG'}
+from flask_wtf.file import FileRequired, FileField, DataRequired
+
 
 # creates the login information
 
@@ -75,8 +74,7 @@ class BookCreationForm(FlaskForm):
                                        "A autograph status should be selected")],
                                    default="XX")
     # no sure why file type validator does not work.
-    images = MultipleFileField("Images", validators=[DataRequired("At least one image should be uploaded!"),
-                                                     FileAllowed(ALLOWED_FILE, message='Only supports png, jpg, JPG, PNG')])
+    images = MultipleFileField("Images", validators=[DataRequired("At least one image should be uploaded!")])
 
     listing_title = StringField("Listing Title", validators=[
                                 InputRequired("A listing title is required!")])

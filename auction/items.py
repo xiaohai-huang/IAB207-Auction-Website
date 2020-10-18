@@ -109,7 +109,7 @@ def create():
         for image in images:
             filename = image.filename
             if not filename.split('.')[1] in ALLOWED_FILE:
-                flash("You can only upload JPG,PNG images!", "file_type")
+                flash('Only supports png, jpg, JPG, PNG', "file_type")
                 valid=False
                 break
         if valid==False:
