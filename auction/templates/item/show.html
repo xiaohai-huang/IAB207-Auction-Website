@@ -221,7 +221,7 @@
                     {% for bid in bids %}
                     <tr class="table{% if loop.index == 1 %}-success {% endif %}">
                       <!-- First table entry needs to be green to highlight highest current bid-->
-                      <th scope="row">{{bid.bid_datetime}}</th>
+                      <th scope="row">{{bid.bid_datetime.strftime("%m/%d/%Y, %H:%M:%S")}}</th>
                       <td>{% for bidder in bidders %} {% if bidder.id == bid.user_id %} {{bidder.username}} {% endif %}
                         {% endfor %}</td>
                       <td>{{"$%.2f"|format(bid.bid_price)}}</td>

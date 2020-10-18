@@ -11,6 +11,7 @@ from .models import Item, Wish, Watchlist, Bid, User, Image, BookCategory, BookC
 from . import db
 from auction.forms import BookCreationForm, BidForm
 from sqlalchemy import func,desc
+from datetime import datetime
 bp = Blueprint('item', __name__, url_prefix='/items')
 
 
@@ -56,8 +57,8 @@ def bid(item_id):
             if b.bid_price > max_bid_price:
                 max_bid_price = b.bid_price
         if form.bid_price.data > max_bid_price:
-
-            bid = Bid(bid_price=form.bid_price.data,item_id=item_id,user_id=current_user.id)
+            
+            bid = Bid(bid_price=form.bid_price.data,item_id=item_id,user_id=current_user.id,bid_datetime=datetime.now())
             db.session.add(bid)
             db.session.commit()
         else: # erro message less than current bid price
@@ -77,6 +78,7 @@ def bid(item_id):
 def create():
     # only seller can create listings
     if( current_user.user_type!="seller"):
+        flash("You cannot create a listing as a buyer!")
         return redirect(url_for('main.index'))
         
     print('Method type: ', request.method)
