@@ -61,7 +61,6 @@
           <label>{{form.autograph_status.label.text}} <span style="color: red;">*</span></label>
           {{form.autograph_status(class="form-control",id="autograph_status")}}
           {% if form.autograph_status.errors %}
-
           <p>{{ form.autograph_status.errors[0] }}</p>
           {% endif %}
         </div>
@@ -139,7 +138,7 @@
           <!-- <input class="form-control" type="text" placeholder="$0.00"> -->
           {{form.starting_bid(class="form-control", type="text", placeholder="$0.00")}}
           {% if form.starting_bid.errors %}
-          
+
           <p>{{ form.starting_bid.errors[0] }}</p>
           {% endif %}
         </div>
@@ -165,7 +164,7 @@
       <div class="col-md-1">
         <!-- {{form.reset(class="btn btn-primary",value="Reset")}} -->
         <!-- <button type="submit" class="btn btn-light">Cancel</button> -->
-        <a class="btn btn-primary" href="{{url_for('item.create')}}" >Reset</a>
+        <a class="btn btn-primary" href="{{url_for('item.create')}}">Reset</a>
       </div>
     </div>
   </div>

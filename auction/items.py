@@ -33,11 +33,18 @@ def show(id):
                 bidders=bidders, bid_form = bid_form)
 
 @bp.route('/<item_id>/bid',methods=["GET","POST"])
+@login_required
 def bid(item_id):
     form = BidForm()
     book = Item.query.filter(Item.id==item_id).first()
 
     if form.validate_on_submit():
+        # make sure seller cannot bid on his own book
+        if current_user.id == book.user_id:
+            flash("You cannot bid on your own book!")
+            return redirect(url_for('item.show',id=item_id))
+
+        
         # get the highest bid
         bids = book.bids
         if len(bids)!=0:
@@ -54,8 +61,11 @@ def bid(item_id):
             db.session.add(bid)
             db.session.commit()
         else: # erro message less than current bid price
-            print("bid price should be greater than the current price")
             flash(f"Please eneter a bid that is greater than ${max_bid_price}")
+    else:
+        if form.bid_price.errors[0] == "Not a valid float value":
+            flash("Please enter a valid bid price!")
+            
     return redirect(url_for('item.show',id=item_id))
 
 
@@ -65,6 +75,7 @@ def bid(item_id):
 @bp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
+    # only seller can create listings
     if( current_user.user_type!="seller"):
         return redirect(url_for('main.index'))
         
