@@ -25,10 +25,6 @@ class RegisterForm(FlaskForm):
     email_id = StringField("Email Address", validators=[
                            Email("Please enter a valid email")])
 
-    # add buyer/seller - check if it is a buyer or seller hint : Use RequiredIf field
-
-    user_type = SelectField(u'Role', choices=[('buyer', 'Buyer'), ('seller', 'Seller')],
-                            validators=[InputRequired("A role should be selected")])
     contact_number = StringField(
         "Contact Number", validators=[InputRequired()])
     address = StringField("Address", validators=[InputRequired()])

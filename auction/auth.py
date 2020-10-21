@@ -46,7 +46,6 @@ def register():
             uname =register.user_name.data
             pwd = register.password.data
             email=register.email_id.data
-            user_type = register.user_type.data
             contact_num = register.contact_number.data
             address = register.address.data
             #check if a user exists
@@ -58,7 +57,7 @@ def register():
             pwd_hash = generate_password_hash(pwd)
             #create a new user model object
             new_user = User(username=uname, password_hash=pwd_hash, email_address=email,
-                            contact_number=contact_num ,user_type=user_type,address=address)
+                            contact_number=contact_num ,address=address)
             db.session.add(new_user)
             db.session.commit()
             #commit to the database and redirect to HTML page

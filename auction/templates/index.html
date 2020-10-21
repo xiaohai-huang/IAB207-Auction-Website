@@ -1,14 +1,7 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
-<!-- error messages -->
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <div class="alert alert-danger" role="alert">
-      {{messages[0]}}
-    </div>
-  {% endif %}
-{% endwith %}
+
 
 {% if book_category == Null %} <!-- Feel free to change this Sophia -->
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light22">

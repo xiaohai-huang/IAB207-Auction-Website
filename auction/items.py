@@ -78,10 +78,6 @@ ALLOWED_FILE = {'png', 'jpg', 'JPG', 'PNG'}
 @bp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
-    # only seller can create listings
-    if(current_user.user_type != "seller"):
-        flash("You cannot create a listing as a buyer!")
-        return redirect(url_for('main.index'))
 
     print('Method type: ', request.method)
     form = BookCreationForm()
