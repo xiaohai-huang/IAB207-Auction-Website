@@ -38,8 +38,9 @@ def search(category):
         outerjoin(Bid,Item.id==Bid.item_id).\
         order_by(Item.item_datetime.desc()).\
         group_by(Item.id).filter(Item.book_category==category).all()
+        image_thumbnails = db.session.query(Image).join(Item, Item.id == Image.item_id, isouter=True).group_by(Item.id).all()
         # render index.html with items
-        return render_template('index.html', items=items_info, show_category_links = False, book_category = category)
+        return render_template('index.html', items=items_info, show_category_links = False, book_category = category, image_thumbnails=image_thumbnails)
 
 
 @bp.route('/watchlist') #Possibly move this to another file?
