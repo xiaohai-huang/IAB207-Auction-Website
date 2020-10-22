@@ -24,7 +24,7 @@ def show(id):
     bids = Bid.query.filter_by(item_id=item.id).order_by(
         Bid.bid_datetime.desc()).limit(10).all()  # grabs top ten most recent bids
     # formats into a nice datetime that can be used to show item listing date; this is optional
-    formatted_datetime = item.item_datetime.strftime("%m/%d/%Y, %H:%M:%S")
+    formatted_datetime = item.item_datetime.strftime("%d/%m/%Y, %H:%M:%S")
     bidders = db.session.query(User).join(Bid, User.id == Bid.user_id, isouter=True).join(
         Item, id == Bid.item_id, isouter=True).filter_by(id=Bid.item_id).order_by(Bid.bid_datetime.desc()).group_by(User.id).limit(10).all()
 
@@ -43,7 +43,7 @@ def bid(item_id):
     if form.validate_on_submit():
         # make sure seller cannot bid on his own book
         if current_user.id == book.user_id:
-            flash("You cannot bid on your own book!")
+            flash("You cannot bid on your own book!","Bidding")
             return redirect(url_for('item.show', id=item_id))
 
         # get the highest bid
@@ -63,10 +63,10 @@ def bid(item_id):
             db.session.add(bid)
             db.session.commit()
         else:  # erro message less than current bid price
-            flash(f"Please enter a bid that is greater than ${max_bid_price}")
+            flash(f"Please enter a bid that is greater than ${max_bid_price}","Bidding")
     else:
         if form.bid_price.errors[0] == "Not a valid float value":
-            flash("Please enter a valid bid price!")
+            flash("Please enter a valid bid price!","Bidding")
 
     return redirect(url_for('item.show', id=item_id))
 
@@ -76,7 +76,7 @@ def bid(item_id):
 def watch(item_id):
     book = Item.query.filter(Item.id == item_id).first()
     if book.item_status == "Closed":
-        flash("Cannot add a closed auction to watchlist")
+        flash("Cannot add a closed auction to watchlist","Nonbidding")
         return redirect(url_for('item.show', id=item_id))
     watchlist = Watchlist.query.filter(Watchlist.user_id == current_user.id).first()
     if watchlist == None:
@@ -85,13 +85,11 @@ def watch(item_id):
         db.session.commit()
         watchlist = Watchlist.query.filter(Watchlist.user_id == current_user.id).first()
 
-    #TODO: Possibly check for duplicate?
-
     new_wish = Wish(watchlist_id = watchlist.id,
                     item_id = book.id)
     db.session.add(new_wish)
     db.session.commit()
-    flash("Item successfully added to watchlist!")
+    flash("Item successfully added to watchlist!","Nonbidding")
     return redirect(url_for('item.show', id=item_id))
 
 @bp.route('/<item_id>/close')
@@ -99,11 +97,11 @@ def watch(item_id):
 def close(item_id):
     book = Item.query.filter(Item.id == item_id).first()
     if current_user.id != book.user_id: #if someone's trying to hack by editing the url
-        flash("You cannot close someone else's auction!")
+        flash("You cannot close someone else's auction!","Nonbidding")
         return redirect(url_for('item.show', id=item_id))
     book.item_status = "Closed"
     db.session.commit()
-    flash("Auction successfully closed!")
+    flash("Auction successfully closed!","Nonbidding")
     return redirect(url_for('item.show', id=item_id))
 
 
