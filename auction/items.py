@@ -87,12 +87,19 @@ def watch(item_id):
         db.session.commit()
         watchlist = Watchlist.query.filter(
             Watchlist.user_id == current_user.id).first()
-
+    # user can only add the book to watchlist once
     new_wish = Wish(watchlist_id=watchlist.id,
                     item_id=book.id)
-    db.session.add(new_wish)
-    db.session.commit()
-    flash("Item successfully added to watchlist!", "table-success")
+    repeated = False
+    for wish in watchlist.wishes:
+        if wish.item_id == new_wish.item_id:
+            flash("Item already exists in the watchlist!","table-danger")
+            repeated = True
+            break
+    if repeated==False:
+        db.session.add(new_wish)
+        db.session.commit()
+        flash("Item successfully added to watchlist!", "table-success")
     return redirect(url_for('item.show', id=item_id))
 
 
