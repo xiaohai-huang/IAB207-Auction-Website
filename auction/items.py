@@ -96,6 +96,9 @@ def watch(item_id):
 @login_required
 def close(item_id):
     book = Item.query.filter(Item.id == item_id).first()
+    if book.item_status == "Closed":
+        flash("Auction is already closed!","Nonbidding")
+        return redirect(url_for('item.show', id=item_id))
     if current_user.id != book.user_id: #if someone's trying to hack by editing the url
         flash("You cannot close someone else's auction!","Nonbidding")
         return redirect(url_for('item.show', id=item_id))
