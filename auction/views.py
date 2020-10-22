@@ -52,9 +52,10 @@ def watchlist():
         items_info = db.session.query(Wish, Item, func.count(Bid.id),func.max(Bid.bid_price)).\
             outerjoin(Wish, Item.id == Wish.item_id).\
             outerjoin(Bid,Item.id==Bid.item_id).\
-            filter_by(Wish.watchlist_id == watchlist.id).\
+            filter(Wish.watchlist_id == watchlist.id).\
             order_by(Item.item_datetime.desc()).\
             group_by(Item.id).all()
-        return render_template('wishlist.html', items = items_info)
+        image_thumbnails = db.session.query(Image).join(Item, Item.id == Image.item_id, isouter=True).group_by(Item.id).all()
+        return render_template('wishlist.html', items = items_info, image_thumbnails = image_thumbnails)
     else:
         return render_template('wishlist.html')

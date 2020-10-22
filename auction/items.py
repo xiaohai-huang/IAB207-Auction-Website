@@ -79,6 +79,12 @@ def watch(item_id):
         flash("Cannot add a closed auction to watchlist")
         return redirect(url_for('item.show', id=item_id))
     watchlist = Watchlist.query.filter(Watchlist.user_id == current_user.id).first()
+    if watchlist == None:
+        new_watchlist = Watchlist(user_id=current_user.id)
+        db.session.add(new_watchlist)
+        db.session.commit()
+        watchlist = Watchlist.query.filter(Watchlist.user_id == current_user.id).first()
+
     #TODO: Possibly check for duplicate?
 
     new_wish = Wish(watchlist_id = watchlist.id,
