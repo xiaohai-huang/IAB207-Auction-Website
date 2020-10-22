@@ -1,5 +1,3 @@
-<!-- TODO: REMOVE STAR RATINGS, INCORPORATE FLASK, ADD COMMENT AND BID FORMS -->
-
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
@@ -78,6 +76,11 @@
               <th scope="row">Autograph Status:</th>
               <td colspan="2">{{item.autograph_status.value}}</td>
             </tr>
+            {% with message = get_flashed_messages(category_filter=["Nonbidding"]) %}
+            {% if message %}
+              <tr class="table-danger"> <td colspan="3">{{ message[0] }}</td></p>
+            {% endif %}
+            {% endwith %}
           </tbody>
         </table>
       </div>
@@ -243,7 +246,7 @@
         </div>
       </div>
       {% else %}
-      {% with message = get_flashed_messages() %}
+      {% with message = get_flashed_messages(category_filter=["Bidding"]) %}
       {% if message %}
        <p class="text-danger"> {{ message[0] }}</p>
       {% endif %}
