@@ -80,14 +80,15 @@
               </tr>
             </thead>
             <tbody>
-              {% for wish, item, num_bids, highest_bid in items %}
-              <tr>
+              {% for wish, item, num_bids, highest_bid in items %}              <tr class="{% if item.item_status == 'Closed' %} table-danger{% endif %}">
                 <th scope="row"><img src="{% for image in image_thumbnails %}{% if item.id == image.item_id %} {{image.image}} {% endif %} {% endfor %}" width="175"
                     height="200"></th>
                 <td><a href="items/{{item.id}}">{{item.listing_title}}</a></td>
-                  <td>{% if highest_bid %}Highest current bid (out of {{num_bids}}): {{{"$%.2f"|format(highest_bid)}} {% else %} No bids yet! Starting at: {{"$%.2f"|format(item.starting_bid)}} {% endif %}</td>
-                  <td>Added to watchlist {{wish.added_datetime}}</td>
-                  <td><button type=" button" class="btn btn-primary btn-sm">Place Bid</button></td>
+                  <td>{% if item.item_status == 'Closed' %} (CLOSED)<br/>{% endif %}{% if highest_bid %}Highest bid (out of {{num_bids}}): {{"$%.2f"|format(highest_bid)}} {% else %} No bids yet! Starting at: {{"$%.2f"|format(item.starting_bid)}} {% endif %}</td>
+                  <td>{{wish.added_datetime.strftime("%d/%m/%Y %H:%M:%S")}}</td>
+                  <td>{% if item.item_status == 'Closed' %}
+                    <button type=" button" disabled class="btn btn-primary btn-sm">Place Bid</button>
+                    {% else %}<button type=" button" class="btn btn-primary btn-sm">Place Bid</button>{% endif %}</td>
                 <td><button type="button" class="btn btn-danger btn-sm">Remove Item</button></td>
               </tr>
               {% endfor %}
