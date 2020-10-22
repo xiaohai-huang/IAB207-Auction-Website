@@ -63,11 +63,41 @@ def bid(item_id):
             db.session.add(bid)
             db.session.commit()
         else:  # erro message less than current bid price
-            flash(f"Please eneter a bid that is greater than ${max_bid_price}")
+            flash(f"Please enter a bid that is greater than ${max_bid_price}")
     else:
         if form.bid_price.errors[0] == "Not a valid float value":
             flash("Please enter a valid bid price!")
 
+    return redirect(url_for('item.show', id=item_id))
+
+
+@bp.route('/<item_id>/watch')
+@login_required
+def watch(item_id):
+    book = Item.query.filter(Item.id == item_id).first()
+    if book.item_status == "Closed":
+        flash("Cannot add a closed auction to watchlist")
+        return redirect(url_for('item.show', id=item_id))
+    watchlist = Watchlist.query.filter(Watchlist.user_id == current_user.id).first()
+    #TODO: Possibly check for duplicate?
+
+    new_wish = Wish(watchlist_id = watchlist.id,
+                    item_id = book.id)
+    db.session.add(new_wish)
+    db.session.commit()
+    flash("Item successfully added to watchlist!")
+    return redirect(url_for('item.show', id=item_id))
+
+@bp.route('/<item_id>/close')
+@login_required
+def close(item_id):
+    book = Item.query.filter(Item.id == item_id).first()
+    if current_user.id != book.user_id: #if someone's trying to hack by editing the url
+        flash("You cannot close someone else's auction!")
+        return redirect(url_for('item.show', id=item_id))
+    book.item_status = "Closed"
+    db.session.commit()
+    flash("Auction successfully closed!")
     return redirect(url_for('item.show', id=item_id))
 
 
@@ -98,7 +128,7 @@ def create():
         if not Item.query.filter(Item.listing_title == listing_title).first() == None:
             flash("The listing title already exists!", "listing_title_repeated")
             # ensure uploaded files are all images
-            valid = False   
+            valid = False
 
         # check file types
         images = request.files.getlist(form.images.name)
