@@ -43,7 +43,7 @@ def bid(item_id):
     if form.validate_on_submit():
         # make sure seller cannot bid on his own book
         if current_user.id == book.user_id:
-            flash("You cannot bid on your own book!","Bidding")
+            flash("You cannot bid on your own book!", "Bidding")
             return redirect(url_for('item.show', id=item_id))
 
         # get the highest bid
@@ -63,10 +63,11 @@ def bid(item_id):
             db.session.add(bid)
             db.session.commit()
         else:  # erro message less than current bid price
-            flash(f"Please enter a bid that is greater than ${max_bid_price}","Bidding")
+            flash(
+                f"Please enter a bid that is greater than ${max_bid_price}", "Bidding")
     else:
         if form.bid_price.errors[0] == "Not a valid float value":
-            flash("Please enter a valid bid price!","Bidding")
+            flash("Please enter a valid bid price!", "Bidding")
 
     return redirect(url_for('item.show', id=item_id))
 
@@ -76,35 +77,38 @@ def bid(item_id):
 def watch(item_id):
     book = Item.query.filter(Item.id == item_id).first()
     if book.item_status == "Closed":
-        flash("Cannot add a closed auction to watchlist","Nonbidding")
+        flash("Cannot add a closed auction to watchlist", "table-danger")
         return redirect(url_for('item.show', id=item_id))
-    watchlist = Watchlist.query.filter(Watchlist.user_id == current_user.id).first()
+    watchlist = Watchlist.query.filter(
+        Watchlist.user_id == current_user.id).first()
     if watchlist == None:
         new_watchlist = Watchlist(user_id=current_user.id)
         db.session.add(new_watchlist)
         db.session.commit()
-        watchlist = Watchlist.query.filter(Watchlist.user_id == current_user.id).first()
+        watchlist = Watchlist.query.filter(
+            Watchlist.user_id == current_user.id).first()
 
-    new_wish = Wish(watchlist_id = watchlist.id,
-                    item_id = book.id)
+    new_wish = Wish(watchlist_id=watchlist.id,
+                    item_id=book.id)
     db.session.add(new_wish)
     db.session.commit()
-    flash("Item successfully added to watchlist!","Nonbidding")
+    flash("Item successfully added to watchlist!", "table-success")
     return redirect(url_for('item.show', id=item_id))
+
 
 @bp.route('/<item_id>/close')
 @login_required
 def close(item_id):
     book = Item.query.filter(Item.id == item_id).first()
     if book.item_status == "Closed":
-        flash("Auction is already closed!","Nonbidding")
+        flash("Auction is already closed!", "Nonbidding")
         return redirect(url_for('item.show', id=item_id))
-    if current_user.id != book.user_id: #if someone's trying to hack by editing the url
-        flash("You cannot close someone else's auction!","Nonbidding")
+    if current_user.id != book.user_id:  # if someone's trying to hack by editing the url
+        flash("You cannot close someone else's auction!", "Nonbidding")
         return redirect(url_for('item.show', id=item_id))
     book.item_status = "Closed"
     db.session.commit()
-    flash("Auction successfully closed!","Nonbidding")
+    flash("Auction successfully closed!", "Nonbidding")
     return redirect(url_for('item.show', id=item_id))
 
 
@@ -143,9 +147,9 @@ def create():
             filename = image.filename
             if not filename.split('.')[1] in ALLOWED_FILE:
                 flash('Only supports png, jpg, JPG, PNG', "file_type")
-                valid=False
+                valid = False
                 break
-        if valid==False:
+        if valid == False:
             return render_template('item/create.html', form=form)
 
         new_book = Item(listing_title=listing_title,
