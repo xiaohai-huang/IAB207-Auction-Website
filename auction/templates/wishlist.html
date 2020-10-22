@@ -80,7 +80,8 @@
               </tr>
             </thead>
             <tbody>
-              {% for wish, item, num_bids, highest_bid in items %}              <tr class="{% if item.item_status == 'Closed' %} table-danger{% endif %}">
+              {% for wish, item, num_bids, highest_bid in items %}
+              <tr class="{% if item.item_status == 'Closed' %} table-danger{% endif %}">
                 <th scope="row"><img src="{% for image in image_thumbnails %}{% if item.id == image.item_id %} {{image.image}} {% endif %} {% endfor %}" width="175"
                     height="200"></th>
                 <td><a href="items/{{item.id}}">{{item.listing_title}}</a></td>
