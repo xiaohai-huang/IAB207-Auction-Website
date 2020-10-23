@@ -3,7 +3,8 @@
 {% block content %}
 
 
-{% if book_category == Null %} <!-- Feel free to change this Sophia -->
+{% if book_category == Null %}
+<!-- Feel free to change this Sophia -->
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light22">
   <div class="col-md-5 p-lg-2 mx-auto my-3">
     <h1 class="display-4 font-weight-normal"><b>Buckley's Books</b></h1>
@@ -51,9 +52,10 @@
           <div class="card-body">
             <h5 class="card-title">Science Fiction</h5>
             <p class="card-text">The stars are at your fingertips.</p>
-            <a class="btn btn-outline-secondary" href="/search/SCIENCE_FICTION"role=" button">Browse</a>
+            <a class="btn btn-outline-secondary" href="/search/SCIENCE_FICTION" role=" button">Browse</a>
             <hr>
-            <p class="card-text"><small class="text-muted">{% if scifi_count == 0 %} No current listings! Be the first to list your own! {% else %} {{scifi_count}} current listings! {% endif %}</small></p>
+            <p class="card-text"><small class="text-muted">{% if scifi_count == 0 %} No current listings! Be the first
+                to list your own! {% else %} {{scifi_count}} current listings! {% endif %}</small></p>
           </div>
         </div>
         <div class="card">
@@ -61,9 +63,10 @@
           <div class="card-body">
             <h5 class="card-title">Fantasy</h5>
             <p class="card-text">Swords and dungeons and dragons, oh my!</p>
-            <a class="btn btn-outline-secondary" href="/search/FANTASY"role=" button">Browse</a>
+            <a class="btn btn-outline-secondary" href="/search/FANTASY" role=" button">Browse</a>
             <hr>
-            <p class="card-text"><small class="text-muted">{% if fantasy_count == 0 %} No current listings! Be the first to list your own! {% else %} {{fantasy_count}} current listings! {% endif %}</small></p>
+            <p class="card-text"><small class="text-muted">{% if fantasy_count == 0 %} No current listings! Be the first
+                to list your own! {% else %} {{fantasy_count}} current listings! {% endif %}</small></p>
           </div>
         </div>
         <div class="card">
@@ -71,9 +74,10 @@
           <div class="card-body">
             <h5 class="card-title">Mystery</h5>
             <p class="card-text">We'd love to be more descriptive here, but it adds to the mystery.</p>
-            <a class="btn btn-outline-secondary" href="/search/MYSTERY"role=" button">Browse</a>
+            <a class="btn btn-outline-secondary" href="/search/MYSTERY" role=" button">Browse</a>
             <hr>
-            <p class="card-text"><small class="text-muted">{% if mystery_count == 0 %} No current listings! Be the first to list your own! {% else %} {{mystery_count}} current listings! {% endif %}</small></p>
+            <p class="card-text"><small class="text-muted">{% if mystery_count == 0 %} No current listings! Be the first
+                to list your own! {% else %} {{mystery_count}} current listings! {% endif %}</small></p>
           </div>
         </div>
       </div>
@@ -84,14 +88,14 @@
     <div class="col-md-12">
       <div class="card-deck">
         <div class="card">
-          <img class="card-img-top" src="../static/mahatma.jpg" alt="Autobiography" width="348"
-            height="261">
+          <img class="card-img-top" src="../static/mahatma.jpg" alt="Autobiography" width="348" height="261">
           <div class="card-body">
             <h5 class="card-title">Autobiography</h5>
             <p class="card-text">Get to know someone.</p>
-            <a class="btn btn-outline-secondary" href="/search/AUTOBIOGRAPHY"role=" button">Browse</a>
+            <a class="btn btn-outline-secondary" href="/search/AUTOBIOGRAPHY" role=" button">Browse</a>
             <hr>
-            <p class="card-text"><small class="text-muted">{% if autobio_count == 0 %} No current listings! Be the first to list your own! {% else %} {{autobio_count}} current listings! {% endif %}</small></p>
+            <p class="card-text"><small class="text-muted">{% if autobio_count == 0 %} No current listings! Be the first
+                to list your own! {% else %} {{autobio_count}} current listings! {% endif %}</small></p>
           </div>
         </div>
         <div class="card">
@@ -99,20 +103,21 @@
           <div class="card-body">
             <h5 class="card-title">Autographed Works</h5>
             <p class="card-text">For the author you adore. Browse among the titles listed as autographed.</p>
-            <a class="btn btn-outline-secondary" href="/search/AUTOGRAPHED"role=" button">Browse</a>
+            <a class="btn btn-outline-secondary" href="/search/AUTOGRAPHED" role=" button">Browse</a>
             <hr>
-            <p class="card-text"><small class="text-muted">{% if autograph_count == 0 %} No current listings! Be the first to list your own! {% else %} {{autograph_count}} current listings! {% endif %}</small></p>
+            <p class="card-text"><small class="text-muted">{% if autograph_count == 0 %} No current listings! Be the
+                first to list your own! {% else %} {{autograph_count}} current listings! {% endif %}</small></p>
           </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src="../static/nonfiction.jpg" alt="Non-Fiction" width="348"
-            height="261">
+          <img class="card-img-top" src="../static/nonfiction.jpg" alt="Non-Fiction" width="348" height="261">
           <div class="card-body">
             <h5 class="card-title">Non-Fiction</h5>
             <p class="card-text">Sometimes the best stories are the true ones.</p>
-            <a class="btn btn-outline-secondary" href="/search/NON_FICTION"role=" button">Browse</a>
+            <a class="btn btn-outline-secondary" href="/search/NON_FICTION" role=" button">Browse</a>
             <hr>
-            <p class="card-text"><small class="text-muted">{% if nonfic_count == 0 %} No current listings! Be the first to list your own! {% else %} {{nonfic_count}} current listings! {% endif %}</small></p>
+            <p class="card-text"><small class="text-muted">{% if nonfic_count == 0 %} No current listings! Be the first
+                to list your own! {% else %} {{nonfic_count}} current listings! {% endif %}</small></p>
           </div>
         </div>
       </div>
@@ -120,64 +125,72 @@
   </div>
 </div>
 {% endif %}
+<div class="container">
 
-{% if items %}
-<div class="album py-5 bg-light22">
-  <div class="container">
-    <div class="position-relative overflow-hidden p-5 p-md-1 m-md-1 text-center bg-light22">
-      <div class="col-md-5 p-lg-1 mx-auto my-1">
-        {% if book_category %}
-        <p class="lead font-weight-normal">Here are all the books in that category</p>
-        {% else %}
-        <p class="lead font-weight-normal">What's hot right now</p>
-        <p>🔥 Check out what has just been listed 🔥</p>
-        {% endif %}
+  {% if items %}
+  <div class="album py-5 bg-light22">
+    <div class="container">
+      <div class="position-relative overflow-hidden p-5 p-md-1 m-md-1 text-center bg-light22">
+        <div class="col-md-5 p-lg-1 mx-auto my-1">
+          {% if book_category %}
+          <p class="lead font-weight-normal">Here are all the books in that category</p>
+          {% else %}
+          <p class="lead font-weight-normal">What's hot right now</p>
+          <p>🔥 Check out what has just been listed 🔥</p>
+          {% endif %}
+        </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
       </div>
-      <div class="product-device shadow-sm d-none d-md-block"></div>
-      <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
     </div>
-  </div>
-<!--TODO: FIX ABOVE TO MAKE SENSE WITH SEARCH-->
-  <div class="row">
-{% for item,num_bids,highest_bid in items %}
-    <div class="col-sm">
-      <div class="card mb-3 h-100" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="{% for image in image_thumbnails %}{% if item.id == image.item_id %} {{image.image}} {% endif %} {% endfor %}" class="card-img"
-              alt="Novel cover image" style="width: 190px; height: 350px;">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              {% if item.item_status == 'Open' %}
-              <span class="badge badge-pill badge-success">Item Still Available</span> <!-- Feel free to change how this looks aesthetically :) -->
-              {% else %}
-              <span class="badge badge-pill badge-danger">Auction Closed</span> <!-- Feel free to change how this looks aesthetically :) -->
-              {% endif %}
-              <hr> <!-- Feel free to change how this looks aesthetically :) -->
-              <h5 class="card-title">{{item.listing_title}}</h5>
-              <p class="card-text">{{item.listing_description|truncate(75, true, '...')}}</p>
-              <p class="card-text"><small class="text-muted">{{num_bids}} current bid(s)!</small></p>
-              <p class="card-text"><small class="text-muted">{% if highest_bid %}Highest current bid: {{"$%.2f"|format(highest_bid)}} {% else %} No bids yet! Starting at: {{"$%.2f"|format(item.starting_bid)}} {% endif %}</small></p>
-              <a class="btn btn-outline-secondary" href="{{url_for('item.show', id=item.id)}}"role="button">View</a>
+    <!--TODO: FIX ABOVE TO MAKE SENSE WITH SEARCH-->
+    <div class="row">
+      {% for item,num_bids,highest_bid in items %}
+      <div class="col-sm">
+        <div class="card mb-3 h-100" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img
+                src="{% for image in image_thumbnails %}{% if item.id == image.item_id %} {{image.image}} {% endif %} {% endfor %}"
+                class="card-img" alt="Novel cover image" style="width: 190px; height: 350px;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                {% if item.item_status == 'Open' %}
+                <span class="badge badge-pill badge-success">Item Still Available</span>
+                <!-- Feel free to change how this looks aesthetically :) -->
+                {% else %}
+                <span class="badge badge-pill badge-danger">Auction Closed</span>
+                <!-- Feel free to change how this looks aesthetically :) -->
+                {% endif %}
+                <hr> <!-- Feel free to change how this looks aesthetically :) -->
+                <h5 class="card-title">{{item.listing_title}}</h5>
+                <p class="card-text">{{item.listing_description|truncate(75, true, '...')}}</p>
+                <p class="card-text"><small class="text-muted">{{num_bids}} current bid(s)!</small></p>
+                <p class="card-text"><small class="text-muted">{% if highest_bid %}Highest current bid:
+                    {{"$%.2f"|format(highest_bid)}} {% else %} No bids yet! Starting at:
+                    {{"$%.2f"|format(item.starting_bid)}} {% endif %}</small></p>
+                <a class="btn btn-outline-secondary" href="{{url_for('item.show', id=item.id)}}" role="button">View</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
       {% endfor %}
     </div>
 
 
 
-{% else %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      No books were found
+    {% else %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          No books were found
+        </div>
       </div>
     </div>
+    {% endif %}
   </div>
-{% endif %}
 </div>
-  {% endblock %}
+
+{% endblock %}
