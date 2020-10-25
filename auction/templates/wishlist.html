@@ -91,7 +91,7 @@
                   <td>{{wish.added_datetime.strftime("%d/%m/%Y %H:%M:%S")}}</td>
                   <td>{% if item.item_status == 'Closed' %}
                     <button type=" button" disabled class="btn btn-primary btn-sm">Place Bid</button>
-                    {% else %}<button type=" button" class="btn btn-primary btn-sm">Place Bid</button>{% endif %}</td>
+                    {% else %}<a class="btn btn-outline-primary" href="{{url_for('item.show', id=item.id)}}" role="button">Place Bid</a>{% endif %}
                 <td><button type="button" class="btn btn-danger btn-sm">Remove Item</button></td>
               </tr>
               {% endfor %}
