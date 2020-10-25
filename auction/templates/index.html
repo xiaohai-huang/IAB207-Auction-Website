@@ -149,12 +149,12 @@
       <div class="col-sm">
         <div class="card mb-3 h-100" style="max-width: 540px;">
           <div class="row no-gutters">
-            <div class="col-md-4">
+            <!--<div class="col-md-4">
               <img
                 src="{% for image in image_thumbnails %}{% if item.id == image.item_id %} {{image.image}} {% endif %} {% endfor %}"
                 class="card-img" alt="Novel cover image" style="width: 190px; height: 350px;">
-            </div>
-            <div class="col-md-8">
+            </div>-->
+            <div class="col-md-12">
               <div class="card-body">
                 {% if item.item_status == 'Open' %}
                 <span class="badge badge-pill badge-success">Item Still Available</span>
