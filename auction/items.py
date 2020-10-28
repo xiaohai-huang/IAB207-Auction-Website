@@ -43,7 +43,7 @@ def bid(item_id):
     if form.validate_on_submit():
         # make sure seller cannot bid on his own book
         if current_user.id == book.user_id:
-            flash("You cannot bid on your own book!", "Bidding")
+            flash("You cannot bid on your own book!", "table-warning")
             return redirect(url_for('item.show', id=item_id))
 
         # get the highest bid
@@ -64,10 +64,10 @@ def bid(item_id):
             db.session.commit()
         else:  # erro message less than current bid price
             flash(
-                f"Please enter a bid that is greater than ${max_bid_price}", "Bidding")
+                f"Please enter a bid that is greater than ${max_bid_price}", "table-warning")
     else:
         if form.bid_price.errors[0] == "Not a valid float value":
-            flash("Please enter a valid bid price!", "Bidding")
+            flash("Please enter a valid bid price!", "table-danger")
 
     return redirect(url_for('item.show', id=item_id))
 
@@ -108,14 +108,14 @@ def watch(item_id):
 def close(item_id):
     book = Item.query.filter(Item.id == item_id).first()
     if book.item_status == "Closed":
-        flash("Auction is already closed!", "Nonbidding")
+        flash("Auction is already closed!", "table-warning")
         return redirect(url_for('item.show', id=item_id))
     if current_user.id != book.user_id:  # if someone's trying to hack by editing the url
-        flash("You cannot close someone else's auction!", "Nonbidding")
+        flash("You cannot close someone else's auction!", "table-danger")
         return redirect(url_for('item.show', id=item_id))
     book.item_status = "Closed"
     db.session.commit()
-    flash("Auction successfully closed!", "Nonbidding")
+    flash("Auction successfully closed!", "table-success")
     return redirect(url_for('item.show', id=item_id))
 
 
