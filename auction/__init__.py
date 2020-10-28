@@ -1,5 +1,5 @@
 # import flask - from the package import class
-from flask import Flask
+from flask import Flask,render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -35,6 +35,13 @@ def create_app():
    @login_manager.user_loader
    def load_user(user_id):
       return User.query.get(int(user_id))
+
+   # handle all exceptions
+   @app.errorhandler(Exception)
+   def handle_exception(e):
+      is_http_exception = len(e.args)==0
+      return render_template("error.html",e=e,http_exception=is_http_exception)
+
    # importing views module here to avoid circular references
    # a commonly used practice.
    from . import views

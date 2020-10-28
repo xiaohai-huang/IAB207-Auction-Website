@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    {% if http_exception %}
+    <h1>Exception code: {{e.code}}</h1>
+    <h2>Exception name: {{e.name}}</h2>
+    <p>{{e.description}}</p>
+    {% else %}
+    <h1>Internal server error</h1>
+    {% endif %}
+
+    <p class="text-mute">The administrator has been notified. Sorry for the inconvenience!</p>
+    <p><a href="{{ url_for('main.index') }}">Back to home page</a></p>
+</div>
+
+{% endblock %}

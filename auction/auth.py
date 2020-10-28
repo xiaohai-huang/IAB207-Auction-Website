@@ -15,7 +15,7 @@ bp = Blueprint('auth', __name__,url_prefix='/auth')
 # this is the hint for a login function
 @bp.route('/login', methods=['GET', 'POST'])
 def login(): #view function
-    print('In Login View function')
+    # print('In Login View function')
     login_form = LoginForm()
     error=None
     if(login_form.validate_on_submit()==True):
