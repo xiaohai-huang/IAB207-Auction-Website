@@ -56,6 +56,7 @@ def bid(item_id):
         for b in bids:
             if b.bid_price > max_bid_price:
                 max_bid_price = b.bid_price
+        # validate the bid price
         if form.bid_price.data > max_bid_price:
 
             bid = Bid(bid_price=form.bid_price.data, item_id=item_id,
@@ -65,7 +66,7 @@ def bid(item_id):
         else:  # erro message less than current bid price
             flash(
                 f"Please enter a bid that is greater than ${max_bid_price}", "table-warning")
-    else:
+    else: # handle unexpected user inputs
         if form.bid_price.errors[0] == "Not a valid float value":
             flash("Please enter a valid bid price!", "table-danger")
 
@@ -127,9 +128,10 @@ ALLOWED_FILE = {'png', 'jpg', 'JPG', 'PNG'}
 @login_required
 def create():
 
-    print('Method type: ', request.method)
+    # print('Method type: ', request.method)
     form = BookCreationForm()
     if(form.validate_on_submit()):
+        # extract data from the form
         listing_title = form.listing_title.data
         book_title = form.book_title.data
         book_category = BookCategory[form.category.data]
@@ -148,7 +150,7 @@ def create():
             # ensure uploaded files are all images
             valid = False
 
-        # check file types
+        # check images' file types
         images = request.files.getlist(form.images.name)
         for image in images:
             filename = image.filename
@@ -156,9 +158,11 @@ def create():
                 flash('Only supports png, jpg, JPG, PNG', "file_type")
                 valid = False
                 break
+        # invalid input detected
         if valid == False:
             return render_template('item/create.html', form=form)
 
+        # create a new book
         new_book = Item(listing_title=listing_title,
                         book_title=book_title,
                         book_category=book_category,

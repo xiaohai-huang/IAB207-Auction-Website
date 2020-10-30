@@ -12,7 +12,6 @@ from auction.models import User
 bp = Blueprint('auth', __name__,url_prefix='/auth')
 
 
-# this is the hint for a login function
 @bp.route('/login', methods=['GET', 'POST'])
 def login(): #view function
     # print('In Login View function')
@@ -29,7 +28,7 @@ def login(): #view function
         if error is None:
             login_user(u1)
             nextp = request.args.get('next') #this gives the url from where the login page was accessed
-            print(nextp)
+            # print(nextp)
             if nextp is None or not nextp.startswith('/'):
                 return redirect(url_for('main.index'))
             return redirect(nextp)
